@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>HUD</name>
+    <events>
+        <variable constant="0" name="PipeBaseScore" sid="500135194984671" static="0" type="number">1</variable>
+        <event-block sid="182052280335530">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="469987952979885" type="System" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="890879245111289" type="TotalScore">
+                    <param id="0" name="X">ViewportRight(&quot;HUD&quot;)/2</param>
+                    <param id="1" name="Y">0</param>
+                </action>
+                <action id="-3" name="Set position" sid="980807177026060" type="Scoring">
+                    <param id="0" name="X">TotalScore.X</param>
+                    <param id="1" name="Y">TotalScore.BBoxBottom</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

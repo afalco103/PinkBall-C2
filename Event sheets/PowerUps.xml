@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>PowerUps</name>
+    <events>
+        <variable constant="1" name="MaxShrinkTime" sid="825762256518701" static="0" type="number">8</variable>
+        <variable constant="1" name="MAXSLOWTIME" sid="160391868788366" static="0" type="number">8</variable>
+        <variable constant="1" name="MaxShrink" sid="240463536394416" static="0" type="number">2</variable>
+        <variable constant="1" name="MAXSLOW" sid="642945059432021" static="0" type="number">2</variable>
+        <variable constant="1" name="MAXSHOOT" sid="928991554351778" static="0" type="number">2</variable>
+        <variable constant="1" name="POWERUPSPAWNRATE" sid="361394467079866" static="0" type="number">0.5</variable>
+        <event-block sid="658850736646178">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="113222891847114" type="PowerUp">
+                    <param id="0" name="Object">Player</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="759108572206779">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="492437456736612" type="System" />
+            </conditions>
+            <actions>
+                <action id="2" name="Set at X" sid="355728793455047" type="PowerUpNameArray">
+                    <param id="0" name="X">0</param>
+                    <param id="1" name="Value">&quot;Shield&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="637329669166975" type="PowerUpNameArray">
+                    <param id="0" name="X">1</param>
+                    <param id="1" name="Value">&quot;Shoot&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="862772279413108" type="PowerUpNameArray">
+                    <param id="0" name="X">2</param>
+                    <param id="1" name="Value">&quot;Slow&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="369750821008488" type="PowerUpNameArray">
+                    <param id="0" name="X">3</param>
+                    <param id="1" name="Value">&quot;Shrink&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="215902848952338" type="PowerUpNameArray">
+                    <param id="0" name="X">4</param>
+                    <param id="1" name="Value">&quot;Safe&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="581540026230885" type="PowerUpNameArray">
+                    <param id="0" name="X">5</param>
+                    <param id="1" name="Value">&quot;Pink&quot;</param>
+                </action>
+                <action id="0" name="Add key" sid="515137926732058" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Shield&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Add key" sid="136699832742988" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Shrink&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Add key" sid="304237336633739" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Slow&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Add key" sid="294382990738739" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Shoot&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Add key" sid="322092065376691" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Safe&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Add key" sid="247030751781287" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Pink&quot;</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <variable constant="0" name="loopCount" sid="361382649829601" static="0" type="number">0</variable>
+                <event-block sid="887662591067900">
+                    <conditions>
+                        <condition id="-23" name="While" sid="384821298195498" type="System" />
+                        <condition id="-14" name="Compare variable" sid="823693432443480" type="System">
+                            <param id="0" name="Variable">loopCount</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="251874630404073" type="System">
+                            <param id="0" name="Object to create">PowerUp</param>
+                            <param id="1" name="Layer">&quot;PowerUps&quot;</param>
+                            <param id="2" name="X">-500</param>
+                            <param id="3" name="Y">-500</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="701719645580360" type="PowerUp">
+                            <param id="0" name="Angle">90</param>
+                        </action>
+                        <action id="0" name="Call function" sid="989161495390863" type="Function">
+                            <param id="0" name="Name">PowerUp.DestroyCallBack</param>
+                            <param id="1" name="Parameter {n}">PowerUp.UID</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="525007102256488" type="System">
+                            <param id="0" name="Variable">loopCount</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="808422798850371">
+            <conditions>
+                <condition id="0" name="On function" sid="891314721174752" type="Function">
+                    <param id="0" name="Name">&quot;InitializePowerUp&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="394375138762299">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="894115371054587" type="System">
+                            <param id="0" name="Object">PowerUp</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="624698128256514" type="PowerUp">
+                            <param id="0" name="Instance variable">Active</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="635532260344402" type="PowerUp">
+                            <param id="0" name="Animation">PowerUpNameArray.At(random(0, PowerUpNameArray.Width-2))</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action disabled="1" id="4" name="Set animation" sid="244882655720903" type="PowerUp">
+                            <param id="0" name="Animation">&quot;Shield&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="0" name="Call function" sid="776196322071465" type="Function">
+                            <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
+                            <param id="1" name="Parameter {n}">PowerUp.UID</param>
+                        </action>
+                        <action id="-24" name="Stop loop" sid="726479791394072" type="System" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="586714185910056">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="641987092424465" type="System">
+                    <param id="0" name="Interval (seconds)">PowerUpSpawnRate</param>
+                </condition>
+                <condition disabled="1" id="-8" name="Compare two values" sid="913112366370635" type="System">
+                    <param id="0" name="First value">floor(random(0,10))</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="367677020964169" type="Function">
+                    <param id="0" name="Name">&quot;InitializePowerUp&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="478451090627932">
+            <conditions>
+                <condition id="0" name="On function" sid="288894788679887" type="Function">
+                    <param id="0" name="Name">&quot;Shrink&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Timer" id="0" name="Start timer" sid="314689539383108" type="Player">
+                    <param id="0" name="Duration">MAXSHRINKTIME</param>
+                    <param id="1" name="Type">0</param>
+                    <param id="2" name="Tag">&quot;shrink&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="402142899921794">
+                    <conditions>
+                        <condition id="0" name="Compare value" sid="818532273130057" type="ActivePowerUps">
+                            <param id="0" name="Key">&quot;Shrink&quot;</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">MAXSHRINK</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set key" sid="649740566014061" type="ActivePowerUps">
+                            <param id="0" name="Key">&quot;Shrink&quot;</param>
+                            <param id="1" name="Value">ActivePowerUps.Get(&quot;Shrink&quot;) + 1</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="638838237161518" type="Player">
+                            <param id="0" name="Width">Player.Width/2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="455283731686722">
+            <conditions>
+                <condition behavior="Timer" id="0" name="On timer" sid="272980171475839" type="Player">
+                    <param id="0" name="Tag">&quot;shrink&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="519487711879965" type="Function">
+                    <param id="0" name="Name">&quot;KillShrink&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="976786453636869">
+            <conditions>
+                <condition id="0" name="On function" sid="265504357651305" type="Function">
+                    <param id="0" name="Name">&quot;KillShrink&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="371353636960205" type="Player">
+                    <param id="0" name="Instance variable">CurrentShrinkTimeElapsed</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-5" name="Set width" sid="958037888697113" type="Player">
+                    <param id="0" name="Width">Player.Width * (2*ActivePowerUps.Get(&quot;Shrink&quot;))</param>
+                </action>
+                <action behavior="Timer" id="1" name="Stop timer" sid="953480444363718" type="Player">
+                    <param id="0" name="Tag">&quot;shrink&quot;</param>
+                </action>
+                <action id="1" name="Set key" sid="146210216366690" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Shrink&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Call function" sid="798753695778265" type="Function">
+                    <param id="0" name="Name">&quot;SetPowerUpAnimation&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="453960844108582">
+            <conditions>
+                <condition id="0" name="On function" sid="818268551687533" type="Function">
+                    <param id="0" name="Name">&quot;Slow&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Timer" id="0" name="Start timer" sid="958571309675885" type="Player">
+                    <param id="0" name="Duration">MAXSLOWTIME</param>
+                    <param id="1" name="Type">0</param>
+                    <param id="2" name="Tag">&quot;slow&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="980939249132914">
+                    <conditions>
+                        <condition id="0" name="Compare value" sid="280449381571093" type="ActivePowerUps">
+                            <param id="0" name="Key">&quot;Slow&quot;</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">MAXSLOW</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set key" sid="900180576052081" type="ActivePowerUps">
+                            <param id="0" name="Key">&quot;Slow&quot;</param>
+                            <param id="1" name="Value">ActivePowerUps.Get(&quot;Slow&quot;)+1</param>
+                        </action>
+                        <action id="-13" name="Set time scale" sid="971614114593535" type="System">
+                            <param id="0" name="Time scale">1/(2*ActivePowerUps.Get(&quot;Slow&quot;))</param>
+                        </action>
+                        <action id="-14" name="Set object time scale" sid="169029443652828" type="System">
+                            <param id="0" name="Object">Player</param>
+                            <param id="1" name="Time scale">1.0</param>
+                        </action>
+                        <action id="-14" name="Set object time scale" sid="879742491651305" type="System">
+                            <param id="0" name="Object">Bullet</param>
+                            <param id="1" name="Time scale">1.0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="747989642894579">
+            <conditions>
+                <condition behavior="Timer" id="0" name="On timer" sid="551977305070640" type="Player">
+                    <param id="0" name="Tag">&quot;slow&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="499557561504746" type="Function">
+                    <param id="0" name="Name">&quot;KillSlow&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="982331226596643">
+            <conditions>
+                <condition id="0" name="On function" sid="943588316684355" type="Function">
+                    <param id="0" name="Name">&quot;KillSlow&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="678149912701072" type="Player">
+                    <param id="0" name="Instance variable">CurrentSlowTimeElapsed</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action behavior="Timer" id="1" name="Stop timer" sid="416778616659678" type="Player">
+                    <param id="0" name="Tag">&quot;slow&quot;</param>
+                </action>
+                <action id="-13" name="Set time scale" sid="502668230125552" type="System">
+                    <param id="0" name="Time scale">1</param>
+                </action>
+                <action id="1" name="Set key" sid="513874743352543" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Slow&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Call function" sid="114388502791901" type="Function">
+                    <param id="0" name="Name">&quot;SetPowerUpAnimation&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="956367650100327">
+            <conditions>
+                <condition id="0" name="On function" sid="551370891633897" type="Function">
+                    <param id="0" name="Name">&quot;Shield&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Set key" sid="964838266197944" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Shield&quot;</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="763195274479001">
+            <conditions>
+                <condition id="0" name="On function" sid="682410352631172" type="Function">
+                    <param id="0" name="Name">&quot;KillShield&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Set key" sid="418604338111093" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Shield&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Call function" sid="832725836462672" type="Function">
+                    <param id="0" name="Name">&quot;SetPowerUpAnimation&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="650338894114743">
+            <conditions>
+                <condition id="0" name="On function" sid="357473521314549" type="Function">
+                    <param id="0" name="Name">&quot;Safe&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="940574932298741" type="System">
+                    <param id="0" name="Variable">EnemySpawnRate</param>
+                    <param id="1" name="Value">ENEMYSPAWNRATEINCREMENTS*3</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="506633106872851">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="689803923267384" type="System">
+                            <param id="0" name="First value">EnemySpawnRate</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">MINENEMYSPAWNRATE</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="132407294069229" type="System">
+                            <param id="0" name="Variable">EnemySpawnRate</param>
+                            <param id="1" name="Value">MINENEMYSPAWNRATE</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="966269211096359">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="903830553194062" type="System">
+                            <param id="0" name="Object">Enemy</param>
+                        </condition>
+                        <condition id="-8" name="Is boolean instance variable set" sid="381566759136260" type="Enemy">
+                            <param id="0" name="Instance variable">Active</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="356056961929833" type="Function">
+                            <param id="0" name="Name">Enemy.DestroyCallBack</param>
+                            <param id="1" name="Parameter {n}">Enemy.UID</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="613336909233165">
+            <conditions>
+                <condition id="0" name="On function" sid="673910577733666" type="Function">
+                    <param id="0" name="Name">&quot;Shoot&quot;</param>
+                </condition>
+                <condition id="0" name="Compare value" sid="542827775692981" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Shoot&quot;</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Value">MAXSHOOT</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Set key" sid="127848077526080" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Shoot&quot;</param>
+                    <param id="1" name="Value">ActivePowerUps.Get(&quot;Shoot&quot;)+1</param>
+                </action>
+                <action behavior="Timer" id="0" name="Start timer" sid="243218665951476" type="Player">
+                    <param id="0" name="Duration">0.2</param>
+                    <param id="1" name="Type">1</param>
+                    <param id="2" name="Tag">&quot;shoot&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="425540112112068">
+            <conditions>
+                <condition behavior="Timer" id="0" name="On timer" sid="559342214648456" type="Player">
+                    <param id="0" name="Tag">&quot;shoot&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="999706994353811">
+                    <conditions>
+                        <condition id="0" name="Compare value" sid="985299741946251" type="ActivePowerUps">
+                            <param id="0" name="Key">&quot;Shoot&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="438108320120452" type="System">
+                            <param id="0" name="Object to create">Bullet</param>
+                            <param id="1" name="Layer">&quot;Player&quot;</param>
+                            <param id="2" name="X">Player.X</param>
+                            <param id="3" name="Y">Player.Y - Player.Height/2</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="627846179568229" type="Bullet">
+                            <param id="0" name="Angle">-90</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="931285860155945">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="849926155904852" type="System" />
+                        <condition id="0" name="Compare value" sid="532494961345099" type="ActivePowerUps">
+                            <param id="0" name="Key">&quot;Shoot&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="560479304983066" type="System">
+                            <param id="0" name="Object to create">Bullet</param>
+                            <param id="1" name="Layer">&quot;Player&quot;</param>
+                            <param id="2" name="X">Player.X-Bullet.Width</param>
+                            <param id="3" name="Y">Player.Y - Player.Height/2</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="189855111287004" type="Bullet">
+                            <param id="0" name="Angle">-90</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="292926081691961" type="System">
+                            <param id="0" name="Object to create">Bullet</param>
+                            <param id="1" name="Layer">&quot;Player&quot;</param>
+                            <param id="2" name="X">Player.X+Bullet.Width</param>
+                            <param id="3" name="Y">Player.Y - Player.Height/2</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="731988262822229" type="Bullet">
+                            <param id="0" name="Angle">-90</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="586160189820032">
+            <conditions>
+                <condition id="0" name="On function" sid="620438542263365" type="Function">
+                    <param id="0" name="Name">&quot;KillShoot&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="1" name="Set key" sid="186290280873093" type="ActivePowerUps">
+                    <param id="0" name="Key">&quot;Shoot&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action behavior="Timer" id="1" name="Stop timer" sid="314206166817940" type="Player">
+                    <param id="0" name="Tag">&quot;shoot&quot;</param>
+                </action>
+                <action id="0" name="Call function" sid="341718237612725" type="Function">
+                    <param id="0" name="Name">&quot;SetPowerUpAnimation&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

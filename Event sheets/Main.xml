@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Main</name>
+    <events>
+        <include>Pipes</include>
+        <include>PowerUps</include>
+        <include>HUD</include>
+        <include>Enemies</include>
+        <include>ComboCoins</include>
+        <include>Player</include>
+        <variable constant="0" name="GameSpeed" sid="906199788729661" static="0" type="number">100</variable>
+        <variable constant="0" name="TotalScore" sid="787007043843392" static="0" type="number">0</variable>
+        <event-block sid="862014786388184">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="367627334387929" type="System">
+                    <param id="0" name="Interval (seconds)">0.25</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="479108286385245" type="System">
+                    <param id="0" name="Variable">GameSpeed</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="978627425587829">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="556714278460121" type="Faller">
+                            <param id="0" name="Instance variable">Active</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="0" name="Set speed" sid="149018426255235" type="Faller">
+                            <param id="0" name="Speed">GameSpeed</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="206442318182262">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="320785531494154" type="Faller">
+                    <param id="0" name="Instance variable">Active</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="837966623974503" type="Faller">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Background&quot;)+(Faller.BBoxBottom-Faller.BBoxTop)/2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="311264973157468" type="Function">
+                    <param id="0" name="Name">Faller.DestroyCallBack</param>
+                    <param id="1" name="Parameter {n}">Faller.UID</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="967511182679066">
+            <conditions>
+                <condition id="0" name="On function" sid="164473741834150" type="Function">
+                    <param id="0" name="Name">&quot;DisableFaller&quot;</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="383545949055807" type="Faller">
+                    <param id="0" name="Unique ID">Function.Param(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="5" name="Set enabled" sid="985194390948689" type="Faller">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="980882252678971" type="Faller">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-3" name="Set position" sid="299451662448027" type="Faller">
+                    <param id="0" name="X">-500</param>
+                    <param id="1" name="Y">-500</param>
+                </action>
+                <action id="-13" name="Set boolean" sid="337957019028740" type="Faller">
+                    <param id="0" name="Instance variable">Active</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="544678971645873">
+            <conditions>
+                <condition id="0" name="On function" sid="846789832545815" type="Function">
+                    <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="589276655405812" type="Faller">
+                    <param id="0" name="Unique ID">Function.Param(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="117286835064065" type="Faller">
+                    <param id="0" name="X">random(0+Faller.Height/2, ViewportRight(&quot;Background&quot;)-Faller.Height/2)</param>
+                    <param id="1" name="Y">0-Faller.Width/2</param>
+                </action>
+                <action id="-13" name="Set boolean" sid="517009511189152" type="Faller">
+                    <param id="0" name="Instance variable">Active</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="512600560727049" type="Faller">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action behavior="Bullet" id="5" name="Set enabled" sid="815865237777271" type="Faller">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

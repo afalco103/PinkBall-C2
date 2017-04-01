@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>New project</name>
+    <description></description>
+    <version>1.0.0.0</version>
+    <author></author>
+    <author-email></author-email>
+    <author-website>http://</author-website>
+    <app-id>com.mycompany.myapp</app-id>
+    <unique-id>2c3qk4uv8gfrq</unique-id>
+    <saved-with-version>23900</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Scirra" id="Timer" version="1">Timer</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>450</width>
+        <height>800</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Downscaling">Medium quality</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Loader style">Construct 2 splash</prop>
+        <prop name="Orientations">Any</prop>
+        <prop name="Pause on unfocus">No</prop>
+        <prop name="Physics engine">Box2D asm.js</prop>
+        <prop name="Preload sounds">Yes</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use high-DPI display">Yes</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-folder name="Pipes">
+            <object-type name="Pipe" sid="706424339793939">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="SpawnedNext" sid="220178268943025" type="boolean" />
+                    <instance-variable name="PlayerIn" sid="986731505154679" type="boolean" />
+                    <instance-variable name="PointsEarned" sid="769946467435279" type="number" />
+                </instance-variables>
+                <container>
+                    <type>Pipe</type>
+                    <type>PipeGate</type>
+                    <type>PipeSides</type>
+                    <type>PipeTop</type>
+                    <type>PipePoints</type>
+                </container>
+                <animation-folder>
+                    <animation framecount="2" loop="0" name="blue" pingpong="0" repeatcount="1" repeatto="0" sid="562586295804452" speed="0">
+                        <frame duration="0" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\pipe parts\BlueOff.png">
+                            <collision-poly>
+                                <point x="0" y="1" />
+                                <point x="0.0138889" y="0.0238096" />
+                                <point x="0.986111" y="0.0238096" />
+                                <point x="1" y="1" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="0" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\pipe parts\BlueOn.png">
+                            <collision-poly>
+                                <point x="1" y="0" />
+                                <point x="0.986111" y="0.97619" />
+                                <point x="0.0138889" y="0.97619" />
+                                <point x="0" y="0" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                    <animation framecount="2" loop="0" name="Miss" pingpong="0" repeatcount="1" repeatto="0" sid="877558773703459" speed="0">
+                        <frame duration="0" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\pipe parts\RedOff.png">
+                            <collision-poly>
+                                <point x="1" y="0" />
+                                <point x="0.986111" y="0.97619" />
+                                <point x="0.0138889" y="0.97619" />
+                                <point x="0" y="0" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="0" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\pipe parts\RedOn.png">
+                            <collision-poly>
+                                <point x="1" y="0" />
+                                <point x="0.986111" y="0.97619" />
+                                <point x="0.0138889" y="0.97619" />
+                                <point x="0" y="0" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="PipeGate" sid="636481620991604">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="Hit" sid="919326379332432" type="boolean" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="Pin" sid="982102501560759">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <container>
+                    <type>Pipe</type>
+                    <type>PipeGate</type>
+                    <type>PipeSides</type>
+                    <type>PipeTop</type>
+                    <type>PipePoints</type>
+                </container>
+                <animation-folder>
+                    <animation framecount="2" loop="0" name="blue" pingpong="0" repeatcount="1" repeatto="0" sid="722646728544634" speed="0">
+                        <frame duration="0" hotspotX="0.495726" hotspotY="0.52381" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\pipe parts\bottomBlueClosed.png">
+                            <collision-poly>
+                                <point x="1" y="0" />
+                                <point x="0.974359" y="0.857143" />
+                                <point x="0.504274" y="0.571429" />
+                                <point x="0.025641" y="0.857143" />
+                                <point x="0" y="0" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="0" hotspotX="0.504274" hotspotY="0.52381" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\pipe parts\bottomBlueOpen.png">
+                            <collision-poly>
+                                <point x="0" y="0" />
+                                <point x="1" y="0" />
+                                <point x="0.974359" y="0.857143" />
+                                <point x="0.025641" y="0.857143" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="PipeSides" sid="636333346292405">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="741422288358597">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <container>
+                    <type>Pipe</type>
+                    <type>PipeGate</type>
+                    <type>PipeSides</type>
+                    <type>PipeTop</type>
+                    <type>PipePoints</type>
+                </container>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="193897472707976" speed="5">
+                        <frame duration="1" hotspotX="0.503356" hotspotY="0.504274" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\pipe parts\sidesBlue.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="PipeTop" sid="984519223214018">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="205839683758231">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <container>
+                    <type>Pipe</type>
+                    <type>PipeGate</type>
+                    <type>PipeSides</type>
+                    <type>PipeTop</type>
+                    <type>PipePoints</type>
+                </container>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="355466615139245" speed="5">
+                        <frame duration="1" hotspotX="0.504274" hotspotY="0.52381" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\pipe parts\topBlue.png">
+                            <collision-poly>
+                                <point x="0.025641" y="0.142857" />
+                                <point x="0.974359" y="0.142857" />
+                                <point x="1" y="1" />
+                                <point x="0" y="1" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="PipePoints" sid="984217058774925">
+                <plugin id="Text" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="253727764178099">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <container>
+                    <type>Pipe</type>
+                    <type>PipeGate</type>
+                    <type>PipeSides</type>
+                    <type>PipeTop</type>
+                    <type>PipePoints</type>
+                </container>
+            </object-type>
+        </object-folder>
+        <object-type name="Player" sid="681724242711495">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="CurrentShrinkTimeElapsed" sid="381139125831586" type="number" />
+                <instance-variable name="CurrentSlowTimeElapsed" sid="532582538341642" type="number" />
+                <instance-variable name="CurrentPipeUID" sid="344572247697928" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Timer" sid="514781945647724">
+                    <behavior id="Timer" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Pink" pingpong="0" repeatcount="1" repeatto="0" sid="966694241134965" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Ball\ball.png">
+                        <collision-poly>
+                            <point x="0.147321" y="0.147321" />
+                            <point x="0.5" y="0" />
+                            <point x="0.852679" y="0.147321" />
+                            <point x="1" y="0.5" />
+                            <point x="0.852679" y="0.852679" />
+                            <point x="0.5" y="1" />
+                            <point x="0.147321" y="0.852679" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="Shrink" pingpong="0" repeatcount="1" repeatto="0" sid="551808919208596" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Ball\ballSkinny.png">
+                        <collision-poly>
+                            <point x="0.147321" y="0.147321" />
+                            <point x="0.5" y="0" />
+                            <point x="0.852679" y="0.147321" />
+                            <point x="1" y="0.5" />
+                            <point x="0.852679" y="0.852679" />
+                            <point x="0.5" y="1" />
+                            <point x="0.147321" y="0.852679" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="Shoot" pingpong="0" repeatcount="1" repeatto="0" sid="117057039382111" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Ball\ballGun.png">
+                        <collision-poly>
+                            <point x="0.147321" y="0.147321" />
+                            <point x="0.5" y="0" />
+                            <point x="0.852679" y="0.147321" />
+                            <point x="1" y="0.5" />
+                            <point x="0.852679" y="0.852679" />
+                            <point x="0.5" y="1" />
+                            <point x="0.147321" y="0.852679" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="Shield" pingpong="0" repeatcount="1" repeatto="0" sid="246595515771019" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Ball\ballShield.png">
+                        <collision-poly>
+                            <point x="0.147321" y="0.147321" />
+                            <point x="0.5" y="0" />
+                            <point x="0.852679" y="0.147321" />
+                            <point x="1" y="0.5" />
+                            <point x="0.852679" y="0.852679" />
+                            <point x="0.5" y="1" />
+                            <point x="0.147321" y="0.852679" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="Slow" pingpong="0" repeatcount="1" repeatto="0" sid="796207036031601" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Ball\ballSlow.png">
+                        <collision-poly>
+                            <point x="0.147321" y="0.147321" />
+                            <point x="0.5" y="0" />
+                            <point x="0.852679" y="0.147321" />
+                            <point x="1" y="0.5" />
+                            <point x="0.852679" y="0.852679" />
+                            <point x="0.5" y="1" />
+                            <point x="0.147321" y="0.852679" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Touch" sid="489287876620461">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="Function" sid="242730702799805">
+            <plugin id="Function" />
+        </object-type>
+        <object-type global="1" name="LevelArray" sid="974772764750757">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type name="PowerUp" sid="540246600663634">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Shrink" pingpong="0" repeatcount="1" repeatto="0" sid="948208565179317" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Power Ups\powerUp0.png">
+                        <collision-poly>
+                            <point x="0.14" y="0.86" />
+                            <point x="0" y="0.5" />
+                            <point x="0.14" y="0.14" />
+                            <point x="0.5" y="0" />
+                            <point x="0.86" y="0.14" />
+                            <point x="1" y="0.5" />
+                            <point x="0.86" y="0.86" />
+                            <point x="0.5" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="Slow" pingpong="0" repeatcount="1" repeatto="0" sid="917096617148254" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Power Ups\powerUp1.png">
+                        <collision-poly>
+                            <point x="0.14" y="0.86" />
+                            <point x="0" y="0.5" />
+                            <point x="0.14" y="0.14" />
+                            <point x="0.5" y="0" />
+                            <point x="0.84" y="0.16" />
+                            <point x="1" y="0.5" />
+                            <point x="0.86" y="0.86" />
+                            <point x="0.5" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="Shield" pingpong="0" repeatcount="1" repeatto="0" sid="342178131944394" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Power Ups\powerUp2.png">
+                        <collision-poly>
+                            <point x="0.14" y="0.86" />
+                            <point x="0" y="0.5" />
+                            <point x="0.14" y="0.14" />
+                            <point x="0.5" y="0" />
+                            <point x="0.84" y="0.16" />
+                            <point x="1" y="0.5" />
+                            <point x="0.86" y="0.86" />
+                            <point x="0.5" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="Safe" pingpong="0" repeatcount="1" repeatto="0" sid="570737700733043" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Power Ups\powerUp3.png">
+                        <collision-poly>
+                            <point x="0.14" y="0.86" />
+                            <point x="0" y="0.5" />
+                            <point x="0.14" y="0.14" />
+                            <point x="0.5" y="0" />
+                            <point x="0.84" y="0.16" />
+                            <point x="1" y="0.5" />
+                            <point x="0.86" y="0.86" />
+                            <point x="0.5" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="Shoot" pingpong="0" repeatcount="1" repeatto="0" sid="996840249528417" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Power Ups\powerUp4.png">
+                        <collision-poly>
+                            <point x="0.14" y="0.86" />
+                            <point x="0" y="0.5" />
+                            <point x="0.14" y="0.14" />
+                            <point x="0.5" y="0" />
+                            <point x="0.84" y="0.16" />
+                            <point x="1" y="0.5" />
+                            <point x="0.86" y="0.86" />
+                            <point x="0.5" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type global="1" name="PowerUpNameArray" sid="924959345961867">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type global="1" name="ActivePowerUps" sid="389946175384256">
+            <plugin id="Dictionary" />
+        </object-type>
+        <object-type name="Bullet" sid="460064811829303">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="744157027234892">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="415384301947104" speed="5">
+                    <frame duration="1" hotspotX="0.473684" hotspotY="0.526316" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\Ball\bullets.png">
+                        <collision-poly>
+                            <point x="0.789474" y="0.210526" />
+                            <point x="1" y="0.473684" />
+                            <point x="0.789474" y="0.789474" />
+                            <point x="0.526316" y="1" />
+                            <point x="0.210526" y="0.789474" />
+                            <point x="0" y="0.473684" />
+                            <point x="0.210526" y="0.210526" />
+                            <point x="0.526316" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Enemy" sid="605008200260602">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="379322224900790" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\alexa\OneDrive\Pictures\Pinkball Assets\baddies\enemy1.png">
+                        <collision-poly>
+                            <point x="0.338462" y="0.338462" />
+                            <point x="0.5" y="0.00769231" />
+                            <point x="0.661538" y="0.338462" />
+                            <point x="0.992308" y="0.5" />
+                            <point x="0.661538" y="0.661538" />
+                            <point x="0.5" y="0.992308" />
+                            <point x="0.338462" y="0.661538" />
+                            <point x="0.00769231" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ComboCoin" sid="905394620987197">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Value" sid="296075107727554" type="number" />
+            </instance-variables>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="714275658854625" speed="5">
+                    <frame duration="1" hotspotX="0.494949" hotspotY="0.50505" original-source="C:\Users\Alexandra\Pictures\PinkBall\Power Ups\combo.png">
+                        <collision-poly>
+                            <point x="0.858586" y="0.858586" />
+                            <point x="0.505051" y="1" />
+                            <point x="0.141414" y="0.858586" />
+                            <point x="0" y="0.505051" />
+                            <point x="0.141414" y="0.141414" />
+                            <point x="0.505051" y="0" />
+                            <point x="0.858586" y="0.141414" />
+                            <point x="1" y="0.505051" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TotalScore" sid="542902361873546">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Scoring" sid="859935698501804">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="InGamePoints" sid="494411139568110">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Fade" sid="148424287866670">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+    </object-folder>
+    <families>
+        <family name="Faller" plugin-id="Sprite" sid="607713808665046">
+            <members>
+                <member>ComboCoin</member>
+                <member>Enemy</member>
+                <member>Pipe</member>
+                <member>PowerUp</member>
+            </members>
+            <instance-variables>
+                <instance-variable name="Active" sid="229819197030180" type="boolean" />
+                <instance-variable name="DestroyCallBack" sid="186671330789237" type="string" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Bullet" sid="192382665218711">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+        </family>
+    </families>
+    <layout-folder>
+        <layout>Game.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>Main.xml</event-sheet>
+        <event-sheet>Player.xml</event-sheet>
+        <event-sheet>Pipes.xml</event-sheet>
+        <event-sheet>PowerUps.xml</event-sheet>
+        <event-sheet>Enemies.xml</event-sheet>
+        <event-sheet>ComboCoins.xml</event-sheet>
+        <event-sheet>HUD.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Touch" uid="1">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="Function" uid="3" />
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>

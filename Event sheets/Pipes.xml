@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Pipes</name>
+    <events>
+        <variable constant="0" name="Level" sid="320637954568893" static="0" type="number">1</variable>
+        <variable constant="0" name="SpawnFrequency" sid="603581317260635" static="0" type="number">0</variable>
+        <event-block sid="867607120869935">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="693010384522445" type="System" />
+            </conditions>
+            <actions>
+                <action id="2" name="Set at X" sid="924150489612707" type="LevelArray">
+                    <param id="0" name="X">0</param>
+                    <param id="1" name="Value">&quot;blue&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="298978539971863" type="LevelArray">
+                    <param id="0" name="X">1</param>
+                    <param id="1" name="Value">&quot;green&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <variable constant="0" name="loopCount" sid="290579863810168" static="0" type="number">0</variable>
+                <event-block sid="923587219910312">
+                    <conditions>
+                        <condition id="-23" name="While" sid="995458124003732" type="System" />
+                        <condition id="-14" name="Compare variable" sid="134575520979152" type="System">
+                            <param id="0" name="Variable">loopCount</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="831913488531231" type="System">
+                            <param id="0" name="Object to create">Pipe</param>
+                            <param id="1" name="Layer">&quot;Pipes&quot;</param>
+                            <param id="2" name="X">-500</param>
+                            <param id="3" name="Y">-500</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="993876411718952" type="Pipe">
+                            <param id="0" name="Angle">90</param>
+                        </action>
+                        <action id="0" name="Call function" sid="410564214654484" type="Function">
+                            <param id="0" name="Name">Pipe.DestroyCallBack</param>
+                            <param id="1" name="Parameter {n}">Pipe.UID</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="937251948824608" type="System">
+                            <param id="0" name="Variable">loopCount</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="237000327899659">
+            <conditions>
+                <condition id="0" name="On function" sid="357283755849837" type="Function">
+                    <param id="0" name="Name">&quot;InitializePipe&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="261644044971795">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="738014391684855" type="System">
+                            <param id="0" name="Object">Pipe</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="948185880094122" type="Pipe">
+                            <param id="0" name="Instance variable">Active</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-5" name="Set width" sid="814844825866711" type="Pipe">
+                            <param id="0" name="Width">random(20,300)</param>
+                        </action>
+                        <action id="0" name="Call function" sid="491635981649146" type="Function">
+                            <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
+                            <param id="1" name="Parameter {n}">Pipe.UID</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="667586731033406" type="Pipe">
+                            <param id="0" name="X">random(0+PipeSides.Height/2, ViewportRight(&quot;Background&quot;)-PipeSides.Height/2)</param>
+                            <param id="1" name="Y">0-Pipe.Width/2</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="670546906328822" type="Pipe">
+                            <param id="0" name="Animation">LevelArray.At(Level-1)</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="Pin" id="1" name="Unpin" sid="913900530586112" type="PipeSides" />
+                        <action id="-5" name="Set width" sid="296743709861712" type="PipeSides">
+                            <param id="0" name="Width">Pipe.Width</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="904654870308068" type="PipeSides">
+                            <param id="0" name="X">Pipe.X</param>
+                            <param id="1" name="Y">Pipe.Y</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="224866910688643" type="PipeSides">
+                            <param id="0" name="Pin to">Pipe</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="1" name="Unpin" sid="422506913428416" type="PipeGate" />
+                        <action id="-3" name="Set position" sid="617097492572372" type="PipeGate">
+                            <param id="0" name="X">Pipe.X+0.74</param>
+                            <param id="1" name="Y">Pipe.BBoxBottom -2</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="674196343084331" type="PipeGate">
+                            <param id="0" name="Pin to">Pipe</param>
+                            <param id="1" name="Mode">1</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="887187415401443" type="PipeGate">
+                            <param id="0" name="Instance variable">Hit</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="594055532963910" type="PipeGate">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                        <action behavior="Pin" id="1" name="Unpin" sid="239278991285282" type="PipeTop" />
+                        <action id="-3" name="Set position" sid="259214030154675" type="PipeTop">
+                            <param id="0" name="X">Pipe.X+0.74</param>
+                            <param id="1" name="Y">Pipe.BBoxTop-PipeTop.Height/2+2</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="356690391261618" type="PipeTop">
+                            <param id="0" name="Pin to">Pipe</param>
+                            <param id="1" name="Mode">1</param>
+                        </action>
+                        <action behavior="Bullet" id="0" name="Set speed" sid="711696559204414" type="Pipe">
+                            <param id="0" name="Speed">GameSpeed</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="486043462674150" type="Pipe">
+                            <param id="0" name="Instance variable">PointsEarned</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action behavior="Pin" id="1" name="Unpin" sid="843338824105567" type="PipePoints" />
+                        <action id="-3" name="Set position" sid="447561970834466" type="PipePoints">
+                            <param id="0" name="X">Pipe.X</param>
+                            <param id="1" name="Y">Pipe.BBoxTop</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="871824659907169" type="PipePoints">
+                            <param id="0" name="Pin to">Pipe</param>
+                            <param id="1" name="Mode">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="343430215388450" type="PipePoints">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-24" name="Stop loop" sid="123900402992879" type="System" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="694892267000505">
+            <conditions>
+                <condition id="0" name="On function" sid="493466713025523" type="Function">
+                    <param id="0" name="Name">&quot;ResetPipe&quot;</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="150751938261932" type="Pipe">
+                    <param id="0" name="Unique ID">Function.Param(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="524765294574517" type="Pipe">
+                    <param id="0" name="Instance variable">SpawnedNext</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Call function" sid="993391953805132" type="Function">
+                    <param id="0" name="Name">&quot;DisableFaller&quot;</param>
+                    <param id="1" name="Parameter {n}">Function.Param(0)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="468917942171049">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="308966325479955" type="Pipe">
+                    <param id="0" name="Instance variable">Active</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="465845730732462" type="Pipe">
+                    <param id="0" name="Instance variable">SpawnedNext</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="972554495539617" type="Pipe">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">Player.Height*4 + Pipe.Width/2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="740438657114615" type="Pipe">
+                    <param id="0" name="Instance variable">SpawnedNext</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Call function" sid="757773758747460" type="Function">
+                    <param id="0" name="Name">&quot;InitializePipe&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="386900156241682">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="588273103418561" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="911713271631130" type="Function">
+                    <param id="0" name="Name">&quot;InitializePipe&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="503594515787658">
+            <conditions>
+                <condition id="0" name="On function" sid="427864906582780" type="Function">
+                    <param id="0" name="Name">&quot;ScorePipe&quot;</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="380168981460958" type="Pipe">
+                    <param id="0" name="Unique ID">Function.Param(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="676903230368491" type="System">
+                    <param id="0" name="Variable">TotalScore</param>
+                    <param id="1" name="Value">PipeBaseScore*Level*Combo</param>
+                </action>
+                <action id="-11" name="Add to" sid="100702094495445" type="Pipe">
+                    <param id="0" name="Instance variable">PointsEarned</param>
+                    <param id="1" name="Value">PipeBaseScore*Level*Combo</param>
+                </action>
+                <action id="0" name="Set text" sid="735480500526538" type="TotalScore">
+                    <param id="0" name="Text">TotalScore</param>
+                </action>
+                <action id="0" name="Set text" sid="615143670677605" type="Scoring">
+                    <param id="0" name="Text">&quot;x&quot;&amp;Combo</param>
+                </action>
+                <action id="0" name="Set text" sid="311823145475609" type="PipePoints">
+                    <param id="0" name="Text">Pipe.PointsEarned</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

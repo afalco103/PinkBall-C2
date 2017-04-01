@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Player</name>
+    <events>
+        <variable constant="1" name="ScoreInterval" sid="478007141355276" static="0" type="number">0.1</variable>
+        <variable constant="0" name="Combo" sid="215275968585422" static="0" type="number">1</variable>
+        <comment>Input</comment>
+        <event-block sid="684537635276362">
+            <conditions>
+                <condition id="12" name="Has Nth touch" sid="242138545594317" type="Touch">
+                    <param id="0" name="Touch number">0</param>
+                </condition>
+                <condition id="12" inverted="1" name="Has Nth touch" sid="373922103744280" type="Touch">
+                    <param id="0" name="Touch number">1</param>
+                </condition>
+                <condition disabled="1" id="4" name="Is touching object" sid="242511154103369" type="Touch">
+                    <param id="0" name="Object">Player</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="583585636539677" type="Player">
+                    <param id="0" name="X">Touch.X</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Pipes</comment>
+        <event-block sid="720684974836077">
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="521015269884087" type="Pipe">
+                    <param id="0" name="Instance variable">PlayerIn</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="543509364594369" type="Player">
+                    <param id="0" name="Object">Pipe</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="216237601465841" type="System">
+                    <param id="0" name="First value">Player.X+Player.Width/2</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Second value">Pipe.X+Pipe.Height/2</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="162788583331027" type="System">
+                    <param id="0" name="First value">Player.X-Player.Width/2</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Second value">Pipe.X-Pipe.Height/2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="197716596106127" type="Pipe">
+                    <param id="0" name="Instance variable">PlayerIn</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="Timer" id="0" name="Start timer" sid="369670788778648" type="Player">
+                    <param id="0" name="Duration">SCOREINTERVAL</param>
+                    <param id="1" name="Type">1</param>
+                    <param id="2" name="Tag">&quot;ScorePipe&quot;</param>
+                </action>
+                <action id="5" name="Set frame" sid="670788781788009" type="Pipe">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="4" name="Set font color" sid="265786996242933" type="Scoring">
+                    <param id="0" name="Color">rgb(255,255,0)</param>
+                </action>
+                <action id="-15" name="Set visible" sid="559198221520131" type="PipePoints">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-10" name="Set value" sid="516125724536009" type="Player">
+                    <param id="0" name="Instance variable">CurrentPipeUID</param>
+                    <param id="1" name="Value">Pipe.UID</param>
+                </action>
+                <action id="0" name="Call function" sid="373046921514893" type="Function">
+                    <param id="0" name="Name">&quot;ScorePipe&quot;</param>
+                    <param id="1" name="Parameter {n}">Player.CurrentPipeUID</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="994332669364918">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="633539200043929" type="Player">
+                    <param id="0" name="Object">PipeGate</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="414568293167103" type="PipeGate">
+                    <param id="0" name="Instance variable">Hit</param>
+                </condition>
+                <condition id="-1" name="Compare X" sid="411545763690123" type="Player">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="X co-ordinate">PipeGate.X+PipeGate.Width/2 -Player.Width/2</param>
+                </condition>
+                <condition id="-1" name="Compare X" sid="695307706291645" type="Player">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="X co-ordinate">PipeGate.X-PipeGate.Width/2+Player.Width/2</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="879486225366736" type="PipeGate">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="Y co-ordinate">Player.Y+PipeGate.Height/2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="957011237434977" type="PipeGate">
+                    <param id="0" name="Instance variable">Hit</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-10" name="Add to" sid="991229940019597" type="System">
+                    <param id="0" name="Variable">Combo</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="582057746205484" type="PipeGate">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Miss</comment>
+        <event-block sid="387694803815569">
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="332526146529806" type="PipeGate">
+                    <param id="0" name="Instance variable">Hit</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="493016208975024" type="PipeGate">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">Player.Y+PipeGate.Height/2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="426378230238774" type="PipeGate">
+                    <param id="0" name="Instance variable">Hit</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="326597112315737" type="System">
+                    <param id="0" name="Variable">Combo</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="4" name="Set animation" sid="960629803658434" type="Pipe">
+                    <param id="0" name="Animation">&quot;Miss&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-11" name="Subtract from" sid="376756393655783" type="System">
+                    <param id="0" name="Variable">EnemySpawnRate</param>
+                    <param id="1" name="Value">ENEMYSPAWNRATEINCREMENTS</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="835271975949704">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="787031183249799" type="System">
+                            <param id="0" name="First value">EnemySpawnRate</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Second value">0.2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="577895755848680" type="System">
+                            <param id="0" name="Variable">EnemySpawnRate</param>
+                            <param id="1" name="Value">0.2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="418797960931342">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="602368379564623" type="Pipe">
+                    <param id="0" name="Instance variable">PlayerIn</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block any="1" sid="460696550779272">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Compare two values" sid="585599122201403" type="System">
+                            <param id="0" name="First value">Player.X+Player.Width/2</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">Pipe.X+Pipe.Height/2</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Compare two values" sid="282455273843954" type="System">
+                            <param id="0" name="First value">Player.X-Player.Width/2</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Second value">Pipe.X-Pipe.Height/2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="963991275065156" type="Pipe">
+                            <param id="0" name="Instance variable">PlayerIn</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="301656932001309" type="Pipe">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                        <action behavior="Timer" id="1" name="Stop timer" sid="831692736763051" type="Player">
+                            <param id="0" name="Tag">&quot;ScorePipe&quot;</param>
+                        </action>
+                        <action id="4" name="Set font color" sid="196474032192155" type="Scoring">
+                            <param id="0" name="Color">rgb(150,150,0)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="502745277933035">
+            <conditions>
+                <condition behavior="Timer" id="0" name="On timer" sid="718102770064174" type="Player">
+                    <param id="0" name="Tag">&quot;ScorePipe&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="846890957737753" type="Function">
+                    <param id="0" name="Name">&quot;ScorePipe&quot;</param>
+                    <param id="1" name="Parameter {n}">Player.CurrentPipeUID</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>PowerUps</comment>
+        <event-block sid="667397354180139">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="727140643045957" type="Player">
+                    <param id="0" name="Object">PowerUp</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="715496188766175" type="Function">
+                    <param id="0" name="Name">PowerUp.AnimationName</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="0" name="Call function" sid="175725967581724" type="Function">
+                    <param id="0" name="Name">&quot;SetPowerUpAnimation&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="0" name="Call function" sid="743603377430506" type="Function">
+                    <param id="0" name="Name">PowerUp.DestroyCallBack</param>
+                    <param id="1" name="Parameter {n}">PowerUp.UID</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="127496771989522">
+            <conditions>
+                <condition id="0" name="On function" sid="480424869627296" type="Function">
+                    <param id="0" name="Name">&quot;SetPowerUpAnimation&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="652279119377567">
+                    <conditions>
+                        <condition id="-10" name="For" sid="489964300341533" type="System">
+                            <param id="0" name="Name">&quot;X&quot;</param>
+                            <param id="1" name="Start index">0</param>
+                            <param id="2" name="End index">PowerUpNameArray.Width-1</param>
+                        </condition>
+                        <condition id="0" name="Compare value" sid="276048563126809" type="ActivePowerUps">
+                            <param id="0" name="Key">PowerUpNameArray.At(loopindex(&quot;X&quot;))</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="527703606803360" type="Player">
+                            <param id="0" name="Animation">PowerUpNameArray.At(loopindex(&quot;X&quot;))</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-24" name="Stop loop" sid="124475978002477" type="System" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="954435651132959">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="804630839736348" type="Bullet" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="907714765682453" type="Bullet" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
