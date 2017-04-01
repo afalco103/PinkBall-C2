@@ -70,6 +70,11 @@
                     <param id="0" name="Key">&quot;Pink&quot;</param>
                     <param id="1" name="Value">1</param>
                 </action>
+                <action behavior="Timer" id="0" name="Start timer" sid="447521582622701" type="Player">
+                    <param id="0" name="Duration">POWERUPSPAWNRATE</param>
+                    <param id="1" name="Type">1</param>
+                    <param id="2" name="Tag">&quot;powerups&quot;</param>
+                </action>
             </actions>
             <sub-events>
                 <variable constant="0" name="loopCount" sid="361382649829601" static="0" type="number">0</variable>
@@ -141,11 +146,11 @@
         </event-block>
         <event-block sid="586714185910056">
             <conditions>
-                <condition id="-6" name="Every X seconds" sid="641987092424465" type="System">
-                    <param id="0" name="Interval (seconds)">PowerUpSpawnRate</param>
+                <condition behavior="Timer" id="0" name="On timer" sid="641987092424465" type="Player">
+                    <param id="0" name="Tag">&quot;powerups&quot;</param>
                 </condition>
-                <condition disabled="1" id="-8" name="Compare two values" sid="913112366370635" type="System">
-                    <param id="0" name="First value">floor(random(0,10))</param>
+                <condition id="-8" name="Compare two values" sid="913112366370635" type="System">
+                    <param id="0" name="First value">floor(random(0,15))</param>
                     <param id="1" name="Comparison">3</param>
                     <param id="2" name="Second value">0</param>
                 </condition>

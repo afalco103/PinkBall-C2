@@ -13,6 +13,7 @@
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
@@ -460,6 +461,10 @@
                 </behavior-type>
             </behaviors>
         </object-type>
+        <object-type name="StarGun" sid="111329357649331">
+            <plugin id="Particles" />
+            <texture original-source="C:\Users\Alexandra\Pictures\PinkBall\misc\star1.png" />
+        </object-type>
     </object-folder>
     <families>
         <family name="Faller" plugin-id="Sprite" sid="607713808665046">
@@ -491,6 +496,7 @@
         <event-sheet>Enemies.xml</event-sheet>
         <event-sheet>ComboCoins.xml</event-sheet>
         <event-sheet>HUD.xml</event-sheet>
+        <event-sheet>Background.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Touch" uid="1">
