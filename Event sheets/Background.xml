@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Background</name>
+    <events>
+        <event-block sid="737587631023788">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="255583815820458" type="System" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="593331886321361" type="StarGun">
+                    <param id="0" name="X">ViewportRight(&quot;Background&quot;)/2</param>
+                    <param id="1" name="Y">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
