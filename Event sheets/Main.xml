@@ -23,9 +23,6 @@
                     <param id="0" name="Variable">GameSpeed</param>
                     <param id="1" name="Value">1</param>
                 </action>
-                <action id="10" name="Set speed randomiser" sid="364205199251385" type="StarGun">
-                    <param id="0" name="Speed randomiser">GameSpeed</param>
-                </action>
             </actions>
             <sub-events>
                 <event-block sid="978627425587829">

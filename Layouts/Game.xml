@@ -97,41 +97,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="StarGun" uid="18">
+                <instance type="Star" uid="18">
                     <properties>
-                        <rate>50</rate>
-                        <spray-cone>0</spray-cone>
-                        <type>Continuous spray</type>
-                        <initial-particle-properties></initial-particle-properties>
-                        <speed>25</speed>
-                        <size>2</size>
-                        <opacity>100</opacity>
-                        <grow-rate>0</grow-rate>
-                        <x-randomiser>400</x-randomiser>
-                        <y-randomiser>0</y-randomiser>
-                        <speed-randomiser->100</speed-randomiser->
-                        <size-randomiser>12</size-randomiser>
-                        <grow-rate-randomiser>0</grow-rate-randomiser>
-                        <particle-lifetime-properties></particle-lifetime-properties>
-                        <acceleration>0</acceleration>
-                        <gravity>0</gravity>
-                        <angle-randomiser>0</angle-randomiser>
-                        <speed-randomiser>0</speed-randomiser>
-                        <opacity-randomiser>0</opacity-randomiser>
-                        <destroy-mode>Particle stopped</destroy-mode>
-                        <timeout>1</timeout>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <Active>false</Active>
+                        <DestroyCallBack>DisableFaller</DestroyCallBack>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>1</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                                <initial-state>Enabled</initial-state>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>61</x>
-                        <y>190</y>
+                        <x>541</x>
+                        <y>34</y>
                         <z>0</z>
-                        <width>8</width>
-                        <height>8</height>
+                        <width>101</width>
+                        <height>101</height>
                         <depth>0</depth>
-                        <hotspotX>0</hotspotX>
-                        <hotspotY>0.5</hotspotY>
+                        <hotspotX>0.504950523</hotspotX>
+                        <hotspotY>0.504950523</hotspotY>
                         <angle>1.570796371</angle>
                         <opacity>1</opacity>
                     </world>
@@ -486,7 +485,7 @@
                     <behavior-instances>
                         <behavior-instance type="Bullet">
                             <properties>
-                                <speed>400</speed>
+                                <speed>1</speed>
                                 <acceleration>0</acceleration>
                                 <gravity>0</gravity>
                                 <bounce-off-solids>No</bounce-off-solids>
@@ -603,6 +602,13 @@
             </properties>
         </instance>
         <instance type="ActivePowerUps" uid="10" />
+        <instance type="StarArray" uid="19">
+            <properties>
+                <width>10</width>
+                <height>1</height>
+                <depth>1</depth>
+            </properties>
+        </instance>
     </nonworld-instances>
     <effects />
 </c2layout>
