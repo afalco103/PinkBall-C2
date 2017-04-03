@@ -3,15 +3,27 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Enemies</name>
     <events>
+        <variable constant="0" name="EnemyPoolID" sid="723687596114423" static="0" type="number">0</variable>
         <variable constant="1" name="EnemyBasePoints" sid="999733394440233" static="0" type="number">100</variable>
         <variable constant="1" name="ENEMYSPAWNRATEINCREMENTS" sid="534403874422746" static="0" type="number">0.2</variable>
-        <variable constant="0" name="MINENEMYSPAWNRATE" sid="636106028531276" static="0" type="number">2</variable>
+        <variable constant="1" name="MINENEMYSPAWNRATE" sid="636106028531276" static="0" type="number">2</variable>
         <variable constant="0" name="EnemySpawnRate" sid="520978212809932" static="0" type="number">2</variable>
         <event-block sid="123220599716269">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="756864586712041" type="System" />
             </conditions>
-            <actions />
+            <actions>
+                <action id="-3" name="Create object" sid="665170472408459" type="System">
+                    <param id="0" name="Object to create">FallerPool</param>
+                    <param id="1" name="Layer">&quot;Enemies&quot;</param>
+                    <param id="2" name="X">0</param>
+                    <param id="3" name="Y">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="827019585228297" type="System">
+                    <param id="0" name="Variable">EnemyPoolID</param>
+                    <param id="1" name="Value">FallerPool.UID</param>
+                </action>
+            </actions>
             <sub-events>
                 <variable constant="0" name="loopCount" sid="586242315565732" static="0" type="number">0</variable>
                 <event-block sid="565727282805083">
@@ -35,7 +47,7 @@
                         </action>
                         <action id="0" name="Call function" sid="112996601430230" type="Function">
                             <param id="0" name="Name">Enemy.DestroyCallBack</param>
-                            <param id="1" name="Parameter {n}">Enemy.UID</param>
+                            <param id="1" name="Parameter {n}">Enemy.UID{###}EnemyPoolID</param>
                         </action>
                         <action id="-10" name="Add to" sid="493723509899897" type="System">
                             <param id="0" name="Variable">loopCount</param>
@@ -50,40 +62,19 @@
                 <condition id="-6" name="Every X seconds" sid="965045301239862" type="System">
                     <param id="0" name="Interval (seconds)">EnemySpawnRate</param>
                 </condition>
-            </conditions>
-            <actions>
-                <action id="0" name="Call function" sid="637423823594975" type="Function">
-                    <param id="0" name="Name">&quot;InitializeEnemy&quot;</param>
-                    <param id="1" name="Parameter {n}"></param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="421332086519015">
-            <conditions>
-                <condition id="0" name="On function" sid="560974123711411" type="Function">
-                    <param id="0" name="Name">&quot;InitializeEnemy&quot;</param>
+                <condition id="-14" name="Pick by unique ID" sid="509422319991046" type="FallerPool">
+                    <param id="0" name="Unique ID">EnemyPoolID</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="458615586785276" type="Enemy">
+                    <param id="0" name="Unique ID">FallerPool.Front</param>
                 </condition>
             </conditions>
-            <actions />
-            <sub-events>
-                <event-block sid="214120001938293">
-                    <conditions>
-                        <condition id="-11" name="For Each" sid="925556062896979" type="System">
-                            <param id="0" name="Object">Enemy</param>
-                        </condition>
-                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="793621295252804" type="Enemy">
-                            <param id="0" name="Instance variable">Active</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Call function" sid="466479952566432" type="Function">
-                            <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
-                            <param id="1" name="Parameter {n}">Enemy.UID</param>
-                        </action>
-                        <action id="-24" name="Stop loop" sid="188760009331028" type="System" />
-                    </actions>
-                </event-block>
-            </sub-events>
+            <actions>
+                <action id="0" name="Call function" sid="466479952566432" type="Function">
+                    <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
+                    <param id="1" name="Parameter {n}">Enemy.UID{###}FallerPool.UID</param>
+                </action>
+            </actions>
         </event-block>
         <event-block sid="499788688768868">
             <conditions>
@@ -113,7 +104,7 @@
                                 <condition id="-8" name="Compare two values" sid="194279377125417" type="System">
                                     <param id="0" name="First value">loopindex(&quot;X&quot;)</param>
                                     <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Second value">PowerUpNameArray.Width</param>
+                                    <param id="2" name="Second value">5</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -173,7 +164,7 @@
             <actions>
                 <action id="-3" name="Create object" sid="692058626722076" type="System">
                     <param id="0" name="Object to create">InGamePoints</param>
-                    <param id="1" name="Layer">&quot;HUD&quot;</param>
+                    <param id="1" name="Layer">&quot;PowerUps&quot;</param>
                     <param id="2" name="X">Enemy.X</param>
                     <param id="3" name="Y">Enemy.Y</param>
                 </action>
@@ -182,7 +173,24 @@
                 </action>
                 <action id="0" name="Call function" sid="967406125711042" type="Function">
                     <param id="0" name="Name">Enemy.DestroyCallBack</param>
-                    <param id="1" name="Parameter {n}">Enemy.UID</param>
+                    <param id="1" name="Parameter {n}">Enemy.UID{###}EnemyPoolID</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="447614809812649">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="546380713010134" type="Enemy">
+                    <param id="0" name="Instance variable">Active</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="683770853620395" type="Enemy">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Background&quot;)+(Enemy.BBoxBottom-Enemy.BBoxTop)/2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="975255285675914" type="Function">
+                    <param id="0" name="Name">Enemy.DestroyCallBack</param>
+                    <param id="1" name="Parameter {n}">Enemy.UID{###}EnemyPoolID</param>
                 </action>
             </actions>
         </event-block>

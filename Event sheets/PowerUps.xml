@@ -3,12 +3,13 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>PowerUps</name>
     <events>
+        <variable constant="0" name="PowerUpPoolID" sid="438352997720345" static="0" type="number">0</variable>
         <variable constant="1" name="MaxShrinkTime" sid="825762256518701" static="0" type="number">8</variable>
         <variable constant="1" name="MAXSLOWTIME" sid="160391868788366" static="0" type="number">8</variable>
         <variable constant="1" name="MaxShrink" sid="240463536394416" static="0" type="number">2</variable>
         <variable constant="1" name="MAXSLOW" sid="642945059432021" static="0" type="number">2</variable>
         <variable constant="1" name="MAXSHOOT" sid="928991554351778" static="0" type="number">2</variable>
-        <variable constant="1" name="POWERUPSPAWNRATE" sid="361394467079866" static="0" type="number">0.5</variable>
+        <variable constant="1" name="POWERUPSPAWNRATE" sid="361394467079866" static="0" type="number">0.8</variable>
         <event-block sid="658850736646178">
             <conditions>
                 <condition id="0" name="On collision with another object" sid="113222891847114" type="PowerUp">
@@ -75,6 +76,20 @@
                     <param id="1" name="Type">1</param>
                     <param id="2" name="Tag">&quot;powerups&quot;</param>
                 </action>
+                <action id="-3" name="Create object" sid="688013724979904" type="System">
+                    <param id="0" name="Object to create">FallerPool</param>
+                    <param id="1" name="Layer">&quot;PowerUps&quot;</param>
+                    <param id="2" name="X">0</param>
+                    <param id="3" name="Y">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="795251866191965" type="System">
+                    <param id="0" name="Variable">PowerUpPoolID</param>
+                    <param id="1" name="Value">FallerPool.UID</param>
+                </action>
+                <action id="0" name="Call function" sid="317043442778049" type="Function">
+                    <param id="0" name="Name">PowerUp.DestroyCallBack</param>
+                    <param id="1" name="Parameter {n}">PowerUp.UID{###}PowerUpPoolID</param>
+                </action>
             </actions>
             <sub-events>
                 <variable constant="0" name="loopCount" sid="361382649829601" static="0" type="number">0</variable>
@@ -84,7 +99,7 @@
                         <condition id="-14" name="Compare variable" sid="823693432443480" type="System">
                             <param id="0" name="Variable">loopCount</param>
                             <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">5</param>
+                            <param id="2" name="Value">6</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -99,7 +114,7 @@
                         </action>
                         <action id="0" name="Call function" sid="989161495390863" type="Function">
                             <param id="0" name="Name">PowerUp.DestroyCallBack</param>
-                            <param id="1" name="Parameter {n}">PowerUp.UID</param>
+                            <param id="1" name="Parameter {n}">PowerUp.UID{###}PowerUpPoolID</param>
                         </action>
                         <action id="-10" name="Add to" sid="525007102256488" type="System">
                             <param id="0" name="Variable">loopCount</param>
@@ -114,35 +129,27 @@
                 <condition id="0" name="On function" sid="891314721174752" type="Function">
                     <param id="0" name="Name">&quot;InitializePowerUp&quot;</param>
                 </condition>
+                <condition id="-14" name="Pick by unique ID" sid="916309887878232" type="FallerPool">
+                    <param id="0" name="Unique ID">PowerUpPoolID</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="281738318686365" type="PowerUp">
+                    <param id="0" name="Unique ID">FallerPool.Front</param>
+                </condition>
             </conditions>
-            <actions />
-            <sub-events>
-                <event-block sid="394375138762299">
-                    <conditions>
-                        <condition id="-11" name="For Each" sid="894115371054587" type="System">
-                            <param id="0" name="Object">PowerUp</param>
-                        </condition>
-                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="624698128256514" type="PowerUp">
-                            <param id="0" name="Instance variable">Active</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="4" name="Set animation" sid="635532260344402" type="PowerUp">
-                            <param id="0" name="Animation">PowerUpNameArray.At(random(0, PowerUpNameArray.Width-2))</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action disabled="1" id="4" name="Set animation" sid="244882655720903" type="PowerUp">
-                            <param id="0" name="Animation">&quot;Shield&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action id="0" name="Call function" sid="776196322071465" type="Function">
-                            <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
-                            <param id="1" name="Parameter {n}">PowerUp.UID</param>
-                        </action>
-                        <action id="-24" name="Stop loop" sid="726479791394072" type="System" />
-                    </actions>
-                </event-block>
-            </sub-events>
+            <actions>
+                <action id="4" name="Set animation" sid="635532260344402" type="PowerUp">
+                    <param id="0" name="Animation">PowerUpNameArray.At(random(0, PowerUpNameArray.Width-2))</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action disabled="1" id="4" name="Set animation" sid="244882655720903" type="PowerUp">
+                    <param id="0" name="Animation">&quot;Shield&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="0" name="Call function" sid="776196322071465" type="Function">
+                    <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
+                    <param id="1" name="Parameter {n}">PowerUp.UID{###}PowerUpPoolID</param>
+                </action>
+            </actions>
         </event-block>
         <event-block sid="586714185910056">
             <conditions>
@@ -150,7 +157,7 @@
                     <param id="0" name="Tag">&quot;powerups&quot;</param>
                 </condition>
                 <condition id="-8" name="Compare two values" sid="913112366370635" type="System">
-                    <param id="0" name="First value">floor(random(0,15))</param>
+                    <param id="0" name="First value">floor(random(0,10))</param>
                     <param id="1" name="Comparison">3</param>
                     <param id="2" name="Second value">0</param>
                 </condition>
@@ -386,8 +393,8 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="0" name="Call function" sid="356056961929833" type="Function">
-                            <param id="0" name="Name">Enemy.DestroyCallBack</param>
+                        <action id="0" name="Call function" sid="824652532626309" type="Function">
+                            <param id="0" name="Name">&quot;CollideEnemy&quot;</param>
                             <param id="1" name="Parameter {n}">Enemy.UID</param>
                         </action>
                     </actions>
@@ -443,6 +450,10 @@
                         <action id="-8" name="Set angle" sid="627846179568229" type="Bullet">
                             <param id="0" name="Angle">-90</param>
                         </action>
+                        <action id="-14" name="Set object time scale" sid="548534089694244" type="System">
+                            <param id="0" name="Object">Bullet</param>
+                            <param id="1" name="Time scale">1.0</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="931285860155945">
@@ -464,6 +475,10 @@
                         <action id="-8" name="Set angle" sid="189855111287004" type="Bullet">
                             <param id="0" name="Angle">-90</param>
                         </action>
+                        <action id="-14" name="Set object time scale" sid="280812176316972" type="System">
+                            <param id="0" name="Object">Bullet</param>
+                            <param id="1" name="Time scale">1.0</param>
+                        </action>
                         <action id="-3" name="Create object" sid="292926081691961" type="System">
                             <param id="0" name="Object to create">Bullet</param>
                             <param id="1" name="Layer">&quot;Player&quot;</param>
@@ -472,6 +487,10 @@
                         </action>
                         <action id="-8" name="Set angle" sid="731988262822229" type="Bullet">
                             <param id="0" name="Angle">-90</param>
+                        </action>
+                        <action id="-14" name="Set object time scale" sid="181362976029624" type="System">
+                            <param id="0" name="Object">Bullet</param>
+                            <param id="1" name="Time scale">1.0</param>
                         </action>
                     </actions>
                 </event-block>
@@ -494,6 +513,23 @@
                 <action id="0" name="Call function" sid="341718237612725" type="Function">
                     <param id="0" name="Name">&quot;SetPowerUpAnimation&quot;</param>
                     <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="315753872659674">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="381661406330751" type="PowerUp">
+                    <param id="0" name="Instance variable">Active</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="583685599882423" type="PowerUp">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Background&quot;)+(PowerUp.BBoxBottom-PowerUp.BBoxTop)/2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="171474217473274" type="Function">
+                    <param id="0" name="Name">PowerUp.DestroyCallBack</param>
+                    <param id="1" name="Parameter {n}">PowerUp.UID{###}PowerUpPoolID</param>
                 </action>
             </actions>
         </event-block>

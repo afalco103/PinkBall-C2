@@ -3,15 +3,25 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>HUD</name>
     <events>
-        <variable constant="0" name="PipeBaseScore" sid="500135194984671" static="0" type="number">1</variable>
+        <variable constant="1" name="PipeBaseScore" sid="500135194984671" static="0" type="number">1</variable>
         <event-block sid="182052280335530">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="469987952979885" type="System" />
             </conditions>
             <actions>
+                <action id="-9" name="Set value" sid="450623386603608" type="System">
+                    <param id="0" name="Variable">TotalScore</param>
+                    <param id="1" name="Value">0</param>
+                </action>
                 <action id="-3" name="Set position" sid="890879245111289" type="TotalScore">
                     <param id="0" name="X">ViewportRight(&quot;HUD&quot;)/2</param>
                     <param id="1" name="Y">0</param>
+                </action>
+                <action id="0" name="Set text" sid="553574370457098" type="TotalScore">
+                    <param id="0" name="Text">0</param>
+                </action>
+                <action id="3" name="Set font size" sid="556027868630750" type="TotalScore">
+                    <param id="0" name="Size (pt)">12</param>
                 </action>
                 <action id="-3" name="Set position" sid="980807177026060" type="Scoring">
                     <param id="0" name="X">TotalScore.X</param>

@@ -3,7 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>ComboCoins</name>
     <events>
-        <variable constant="0" name="ComboChipSpawnRate" sid="743431921154212" static="0" type="number">0.1</variable>
+        <variable constant="0" name="ComboCoinPoolID" sid="879533003169732" static="0" type="number">0</variable>
+        <variable constant="1" name="COMBOCHIPSPAWNRATE" sid="743431921154212" static="0" type="number">0.2</variable>
         <event-block sid="386378533304350">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="916799612551373" type="System" />
@@ -13,6 +14,16 @@
                     <param id="0" name="Duration">ComboChipSpawnRate</param>
                     <param id="1" name="Type">1</param>
                     <param id="2" name="Tag">&quot;combos&quot;</param>
+                </action>
+                <action id="-3" name="Create object" sid="353957983032397" type="System">
+                    <param id="0" name="Object to create">FallerPool</param>
+                    <param id="1" name="Layer">&quot;PowerUps&quot;</param>
+                    <param id="2" name="X">0</param>
+                    <param id="3" name="Y">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="790345394347954" type="System">
+                    <param id="0" name="Variable">ComboCoinPoolID</param>
+                    <param id="1" name="Value">FallerPool.UID</param>
                 </action>
             </actions>
             <sub-events>
@@ -38,7 +49,7 @@
                         </action>
                         <action id="0" name="Call function" sid="967158968354431" type="Function">
                             <param id="0" name="Name">&quot;DisableFaller&quot;</param>
-                            <param id="1" name="Parameter {n}">ComboCoin.UID</param>
+                            <param id="1" name="Parameter {n}">ComboCoin.UID{###}ComboCoinPoolID</param>
                         </action>
                         <action id="-10" name="Add to" sid="637628408035785" type="System">
                             <param id="0" name="Variable">loopCount</param>
@@ -53,31 +64,23 @@
                 <condition id="0" name="On function" sid="106240395199463" type="Function">
                     <param id="0" name="Name">&quot;InitializeComboCoin&quot;</param>
                 </condition>
+                <condition id="-14" name="Pick by unique ID" sid="167746591549666" type="FallerPool">
+                    <param id="0" name="Unique ID">ComboCoinPoolID</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="413423336834109" type="ComboCoin">
+                    <param id="0" name="Unique ID">FallerPool.Front</param>
+                </condition>
             </conditions>
-            <actions />
-            <sub-events>
-                <event-block sid="864172102449398">
-                    <conditions>
-                        <condition id="-11" name="For Each" sid="611137295128293" type="System">
-                            <param id="0" name="Object">ComboCoin</param>
-                        </condition>
-                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="837889920402293" type="ComboCoin">
-                            <param id="0" name="Instance variable">Active</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Call function" sid="320791075503715" type="Function">
-                            <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
-                            <param id="1" name="Parameter {n}">ComboCoin.UID</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="387990285365474" type="ComboCoin">
-                            <param id="0" name="Instance variable">Value</param>
-                            <param id="1" name="Value">5*floor(random(1,5))</param>
-                        </action>
-                        <action id="-24" name="Stop loop" sid="123000359957722" type="System" />
-                    </actions>
-                </event-block>
-            </sub-events>
+            <actions>
+                <action id="0" name="Call function" sid="854182096690281" type="Function">
+                    <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
+                    <param id="1" name="Parameter {n}">ComboCoin.UID{###}ComboCoinPoolID</param>
+                </action>
+                <action id="-10" name="Set value" sid="615194716490339" type="ComboCoin">
+                    <param id="0" name="Instance variable">Value</param>
+                    <param id="1" name="Value">5*floor(random(1,5))</param>
+                </action>
+            </actions>
         </event-block>
         <event-block sid="573683901258206">
             <conditions>
@@ -92,7 +95,7 @@
                 </action>
                 <action id="-3" name="Create object" sid="836730737620799" type="System">
                     <param id="0" name="Object to create">InGamePoints</param>
-                    <param id="1" name="Layer">&quot;HUD&quot;</param>
+                    <param id="1" name="Layer">&quot;PowerUps&quot;</param>
                     <param id="2" name="X">ComboCoin.X</param>
                     <param id="3" name="Y">ComboCoin.Y</param>
                 </action>
@@ -104,7 +107,7 @@
                 </action>
                 <action id="0" name="Call function" sid="609245578081799" type="Function">
                     <param id="0" name="Name">ComboCoin.DestroyCallBack</param>
-                    <param id="1" name="Parameter {n}">ComboCoin.UID</param>
+                    <param id="1" name="Parameter {n}">ComboCoin.UID{###}ComboCoinPoolID</param>
                 </action>
             </actions>
         </event-block>
@@ -114,15 +117,32 @@
                     <param id="0" name="Tag">&quot;combos&quot;</param>
                 </condition>
                 <condition id="-8" name="Compare two values" sid="238819844733426" type="System">
-                    <param id="0" name="First value">random(0,15)</param>
+                    <param id="0" name="First value">random(0,20)</param>
                     <param id="1" name="Comparison">3</param>
-                    <param id="2" name="Second value">2</param>
+                    <param id="2" name="Second value">1</param>
                 </condition>
             </conditions>
             <actions>
                 <action id="0" name="Call function" sid="705333673961319" type="Function">
                     <param id="0" name="Name">&quot;InitializeComboCoin&quot;</param>
                     <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="294530532684030">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="591666392044697" type="ComboCoin">
+                    <param id="0" name="Instance variable">Active</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="750809428498140" type="ComboCoin">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Background&quot;)+(ComboCoin.BBoxBottom-ComboCoin.BBoxTop)/2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="469457174740448" type="Function">
+                    <param id="0" name="Name">ComboCoin.DestroyCallBack</param>
+                    <param id="1" name="Parameter {n}">ComboCoin.UID{###}ComboCoinPoolID</param>
                 </action>
             </actions>
         </event-block>

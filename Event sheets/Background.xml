@@ -3,18 +3,30 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Background</name>
     <events>
+        <variable constant="0" name="StarPoolID" sid="789891264359909" static="0" type="number">0</variable>
         <event-block sid="737587631023788">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="638616467097885" type="System" />
             </conditions>
-            <actions />
+            <actions>
+                <action id="-3" name="Create object" sid="109695231193519" type="System">
+                    <param id="0" name="Object to create">FallerPool</param>
+                    <param id="1" name="Layer">&quot;Background&quot;</param>
+                    <param id="2" name="X">0</param>
+                    <param id="3" name="Y">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="575025960492198" type="System">
+                    <param id="0" name="Variable">StarPoolID</param>
+                    <param id="1" name="Value">FallerPool.UID</param>
+                </action>
+            </actions>
             <sub-events>
                 <event-block sid="508042358430526">
                     <conditions>
                         <condition id="-10" name="For" sid="278416928822566" type="System">
                             <param id="0" name="Name">&quot;X&quot;</param>
                             <param id="1" name="Start index">1</param>
-                            <param id="2" name="End index">300</param>
+                            <param id="2" name="End index">600</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -24,17 +36,12 @@
                             <param id="2" name="X">-500</param>
                             <param id="3" name="Y">-500</param>
                         </action>
-                        <action id="5" name="Push" sid="928148357270977" type="StarArray">
-                            <param id="0" name="Where">1</param>
-                            <param id="1" name="Value">Star.UID</param>
-                            <param id="2" name="Axis">0</param>
-                        </action>
                         <action behavior="Bullet" id="3" name="Set angle of motion" sid="145011289157278" type="Star">
                             <param id="0" name="Angle">90</param>
                         </action>
                         <action id="0" name="Call function" sid="378526720229642" type="Function">
                             <param id="0" name="Name">&quot;DisableFaller&quot;</param>
-                            <param id="1" name="Parameter {n}">Star.UID</param>
+                            <param id="1" name="Parameter {n}">Star.UID{###}StarPoolID</param>
                         </action>
                     </actions>
                 </event-block>
@@ -45,40 +52,46 @@
                 <condition id="0" name="On function" sid="768094789726186" type="Function">
                     <param id="0" name="Name">&quot;InitializeStar&quot;</param>
                 </condition>
-                <condition id="-14" name="Pick by unique ID" sid="962789298292101" type="Star">
-                    <param id="0" name="Unique ID">StarArray.Front</param>
+                <condition id="-14" name="Pick by unique ID" sid="932885235597998" type="FallerPool">
+                    <param id="0" name="Unique ID">StarPoolID</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="641184011407496" type="Star">
+                    <param id="0" name="Unique ID">FallerPool.Front</param>
                 </condition>
             </conditions>
-            <actions />
+            <actions>
+                <action id="0" name="Call function" sid="588260140658425" type="Function">
+                    <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
+                    <param id="1" name="Parameter {n}">Star.UID{###}StarPoolID</param>
+                </action>
+                <action id="-5" name="Set width" sid="374645945583925" type="Star">
+                    <param id="0" name="Width">random(2, 12)</param>
+                </action>
+                <action id="-6" name="Set height" sid="381535654060017" type="Star">
+                    <param id="0" name="Height">Star.Width</param>
+                </action>
+                <action behavior="Bullet" id="0" name="Set speed" sid="802816113375747" type="Star">
+                    <param id="0" name="Speed">random(25, GameSpeed*(Star.Width/12))</param>
+                </action>
+            </actions>
             <sub-events>
-                <event-block sid="761734936608630">
+                <event-block sid="912646066761858">
                     <conditions>
-                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="177911367425034" type="Star">
-                            <param id="0" name="Instance variable">Active</param>
+                        <condition id="-8" name="Compare two values" sid="908173360745374" type="System">
+                            <param id="0" name="First value">Star.Width</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">random(2,12)</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="0" name="Call function" sid="588260140658425" type="Function">
-                            <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
-                            <param id="1" name="Parameter {n}">Star.UID</param>
+                        <action id="-5" name="Set width" sid="908810409822685" type="Star">
+                            <param id="0" name="Width">random(2, 8)</param>
                         </action>
-                        <action id="-5" name="Set width" sid="374645945583925" type="Star">
-                            <param id="0" name="Width">random(2, 12)</param>
-                        </action>
-                        <action id="-6" name="Set height" sid="113831438949855" type="Star">
+                        <action id="-6" name="Set height" sid="199060045844131" type="Star">
                             <param id="0" name="Height">Star.Width</param>
                         </action>
-                        <action behavior="Bullet" id="0" name="Set speed" sid="262007739253204" type="Star">
-                            <param id="0" name="Speed">random(25, GameSpeed)</param>
-                        </action>
-                        <action id="6" name="Pop" sid="216972836360923" type="StarArray">
-                            <param id="0" name="Where">1</param>
-                            <param id="1" name="Axis">0</param>
-                        </action>
-                        <action id="5" name="Push" sid="761258183381747" type="StarArray">
-                            <param id="0" name="Where">0</param>
-                            <param id="1" name="Value">Star.UID</param>
-                            <param id="2" name="Axis">0</param>
+                        <action behavior="Bullet" id="0" name="Set speed" sid="969662429750186" type="Star">
+                            <param id="0" name="Speed">random(25, GameSpeed*(Star.Width/12))</param>
                         </action>
                     </actions>
                 </event-block>
@@ -94,6 +107,23 @@
                 <action id="0" name="Call function" sid="602188527243834" type="Function">
                     <param id="0" name="Name">&quot;InitializeStar&quot;</param>
                     <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="222875150417286">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="510486057993631" type="Star">
+                    <param id="0" name="Instance variable">Active</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="601673322706833" type="Star">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Background&quot;)+20</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="449313021068072" type="Function">
+                    <param id="0" name="Name">&quot;DisableFaller&quot;</param>
+                    <param id="1" name="Parameter {n}">Star.UID{###}StarPoolID</param>
                 </action>
             </actions>
         </event-block>

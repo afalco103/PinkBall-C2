@@ -3,8 +3,9 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Pipes</name>
     <events>
+        <variable constant="0" name="PipesHit" sid="945982798068657" static="0" type="number">0</variable>
+        <variable constant="0" name="PipePoolID" sid="964531131752287" static="0" type="number">0</variable>
         <variable constant="0" name="Level" sid="320637954568893" static="0" type="number">1</variable>
-        <variable constant="0" name="SpawnFrequency" sid="603581317260635" static="0" type="number">0</variable>
         <event-block sid="867607120869935">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="693010384522445" type="System" />
@@ -16,7 +17,37 @@
                 </action>
                 <action id="2" name="Set at X" sid="298978539971863" type="LevelArray">
                     <param id="0" name="X">1</param>
+                    <param id="1" name="Value">&quot;teal&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="915298408947642" type="LevelArray">
+                    <param id="0" name="X">2</param>
                     <param id="1" name="Value">&quot;green&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="306803475129422" type="LevelArray">
+                    <param id="0" name="X">3</param>
+                    <param id="1" name="Value">&quot;yellow&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="453499203313144" type="LevelArray">
+                    <param id="0" name="X">4</param>
+                    <param id="1" name="Value">&quot;orange&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="712978963234751" type="LevelArray">
+                    <param id="0" name="X">5</param>
+                    <param id="1" name="Value">&quot;purple&quot;</param>
+                </action>
+                <action id="2" name="Set at X" sid="474004355113877" type="LevelArray">
+                    <param id="0" name="X">6</param>
+                    <param id="1" name="Value">&quot;white&quot;</param>
+                </action>
+                <action id="-3" name="Create object" sid="289120942490462" type="System">
+                    <param id="0" name="Object to create">FallerPool</param>
+                    <param id="1" name="Layer">&quot;Pipes&quot;</param>
+                    <param id="2" name="X">0</param>
+                    <param id="3" name="Y">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="795818240772257" type="System">
+                    <param id="0" name="Variable">PipePoolID</param>
+                    <param id="1" name="Value">FallerPool.UID</param>
                 </action>
             </actions>
             <sub-events>
@@ -42,7 +73,7 @@
                         </action>
                         <action id="0" name="Call function" sid="410564214654484" type="Function">
                             <param id="0" name="Name">Pipe.DestroyCallBack</param>
-                            <param id="1" name="Parameter {n}">Pipe.UID</param>
+                            <param id="1" name="Parameter {n}">Pipe.UID{###}PipePoolID</param>
                         </action>
                         <action id="-10" name="Add to" sid="937251948824608" type="System">
                             <param id="0" name="Variable">loopCount</param>
@@ -57,94 +88,98 @@
                 <condition id="0" name="On function" sid="357283755849837" type="Function">
                     <param id="0" name="Name">&quot;InitializePipe&quot;</param>
                 </condition>
+                <condition id="-14" name="Pick by unique ID" sid="285370383303586" type="FallerPool">
+                    <param id="0" name="Unique ID">PipePoolID</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="477980414078442" type="Pipe">
+                    <param id="0" name="Unique ID">FallerPool.Front</param>
+                </condition>
             </conditions>
-            <actions />
-            <sub-events>
-                <event-block sid="261644044971795">
-                    <conditions>
-                        <condition id="-11" name="For Each" sid="738014391684855" type="System">
-                            <param id="0" name="Object">Pipe</param>
-                        </condition>
-                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="948185880094122" type="Pipe">
-                            <param id="0" name="Instance variable">Active</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-5" name="Set width" sid="814844825866711" type="Pipe">
-                            <param id="0" name="Width">random(20,300)</param>
-                        </action>
-                        <action id="0" name="Call function" sid="491635981649146" type="Function">
-                            <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
-                            <param id="1" name="Parameter {n}">Pipe.UID</param>
-                        </action>
-                        <action id="-3" name="Set position" sid="667586731033406" type="Pipe">
-                            <param id="0" name="X">random(0+PipeSides.Height/2, ViewportRight(&quot;Background&quot;)-PipeSides.Height/2)</param>
-                            <param id="1" name="Y">0-Pipe.Width/2</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="670546906328822" type="Pipe">
-                            <param id="0" name="Animation">LevelArray.At(Level-1)</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action behavior="Pin" id="1" name="Unpin" sid="913900530586112" type="PipeSides" />
-                        <action id="-5" name="Set width" sid="296743709861712" type="PipeSides">
-                            <param id="0" name="Width">Pipe.Width</param>
-                        </action>
-                        <action id="-3" name="Set position" sid="904654870308068" type="PipeSides">
-                            <param id="0" name="X">Pipe.X</param>
-                            <param id="1" name="Y">Pipe.Y</param>
-                        </action>
-                        <action behavior="Pin" id="0" name="Pin to object" sid="224866910688643" type="PipeSides">
-                            <param id="0" name="Pin to">Pipe</param>
-                            <param id="1" name="Mode">0</param>
-                        </action>
-                        <action behavior="Pin" id="1" name="Unpin" sid="422506913428416" type="PipeGate" />
-                        <action id="-3" name="Set position" sid="617097492572372" type="PipeGate">
-                            <param id="0" name="X">Pipe.X+0.74</param>
-                            <param id="1" name="Y">Pipe.BBoxBottom -2</param>
-                        </action>
-                        <action behavior="Pin" id="0" name="Pin to object" sid="674196343084331" type="PipeGate">
-                            <param id="0" name="Pin to">Pipe</param>
-                            <param id="1" name="Mode">1</param>
-                        </action>
-                        <action id="-13" name="Set boolean" sid="887187415401443" type="PipeGate">
-                            <param id="0" name="Instance variable">Hit</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action id="5" name="Set frame" sid="594055532963910" type="PipeGate">
-                            <param id="0" name="Frame number">0</param>
-                        </action>
-                        <action behavior="Pin" id="1" name="Unpin" sid="239278991285282" type="PipeTop" />
-                        <action id="-3" name="Set position" sid="259214030154675" type="PipeTop">
-                            <param id="0" name="X">Pipe.X+0.74</param>
-                            <param id="1" name="Y">Pipe.BBoxTop-PipeTop.Height/2+2</param>
-                        </action>
-                        <action behavior="Pin" id="0" name="Pin to object" sid="356690391261618" type="PipeTop">
-                            <param id="0" name="Pin to">Pipe</param>
-                            <param id="1" name="Mode">1</param>
-                        </action>
-                        <action behavior="Bullet" id="0" name="Set speed" sid="711696559204414" type="Pipe">
-                            <param id="0" name="Speed">GameSpeed</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="486043462674150" type="Pipe">
-                            <param id="0" name="Instance variable">PointsEarned</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action behavior="Pin" id="1" name="Unpin" sid="843338824105567" type="PipePoints" />
-                        <action id="-3" name="Set position" sid="447561970834466" type="PipePoints">
-                            <param id="0" name="X">Pipe.X</param>
-                            <param id="1" name="Y">Pipe.BBoxTop</param>
-                        </action>
-                        <action behavior="Pin" id="0" name="Pin to object" sid="871824659907169" type="PipePoints">
-                            <param id="0" name="Pin to">Pipe</param>
-                            <param id="1" name="Mode">1</param>
-                        </action>
-                        <action id="-15" name="Set visible" sid="343430215388450" type="PipePoints">
-                            <param id="0" name="Visibility">0</param>
-                        </action>
-                        <action id="-24" name="Stop loop" sid="123900402992879" type="System" />
-                    </actions>
-                </event-block>
-            </sub-events>
+            <actions>
+                <action id="-5" name="Set width" sid="814844825866711" type="Pipe">
+                    <param id="0" name="Width">random(40,300)</param>
+                </action>
+                <action id="0" name="Call function" sid="491635981649146" type="Function">
+                    <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
+                    <param id="1" name="Parameter {n}">Pipe.UID{###}PipePoolID</param>
+                </action>
+                <action id="-3" name="Set position" sid="667586731033406" type="Pipe">
+                    <param id="0" name="X">random(0+PipeSides.Height/2, ViewportRight(&quot;Background&quot;)-PipeSides.Height/2)</param>
+                    <param id="1" name="Y">0-Pipe.Width/2</param>
+                </action>
+                <action id="4" name="Set animation" sid="670546906328822" type="Pipe">
+                    <param id="0" name="Animation">LevelArray.At(min(Level-1, 6))</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action behavior="Bullet" id="0" name="Set speed" sid="711696559204414" type="Pipe">
+                    <param id="0" name="Speed">GameSpeed</param>
+                </action>
+                <action id="-10" name="Set value" sid="486043462674150" type="Pipe">
+                    <param id="0" name="Instance variable">PointsEarned</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action behavior="Pin" id="1" name="Unpin" sid="913900530586112" type="PipeSides" />
+                <action id="4" name="Set animation" sid="353422670645254" type="PipeSides">
+                    <param id="0" name="Animation">LevelArray.At(min(Level-1, 6))</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-5" name="Set width" sid="296743709861712" type="PipeSides">
+                    <param id="0" name="Width">Pipe.Width</param>
+                </action>
+                <action id="-3" name="Set position" sid="904654870308068" type="PipeSides">
+                    <param id="0" name="X">Pipe.X</param>
+                    <param id="1" name="Y">Pipe.Y</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="224866910688643" type="PipeSides">
+                    <param id="0" name="Pin to">Pipe</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="1" name="Unpin" sid="422506913428416" type="PipeGate" />
+                <action id="-3" name="Set position" sid="617097492572372" type="PipeGate">
+                    <param id="0" name="X">Pipe.X+0.74</param>
+                    <param id="1" name="Y">Pipe.BBoxBottom -2</param>
+                </action>
+                <action id="4" name="Set animation" sid="388034144622102" type="PipeGate">
+                    <param id="0" name="Animation">LevelArray.At(min(Level-1, 6))</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-13" name="Set boolean" sid="887187415401443" type="PipeGate">
+                    <param id="0" name="Instance variable">Hit</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="594055532963910" type="PipeGate">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="674196343084331" type="PipeGate">
+                    <param id="0" name="Pin to">Pipe</param>
+                    <param id="1" name="Mode">1</param>
+                </action>
+                <action behavior="Pin" id="1" name="Unpin" sid="239278991285282" type="PipeTop" />
+                <action id="4" name="Set animation" sid="587627600011648" type="PipeTop">
+                    <param id="0" name="Animation">LevelArray.At(min(Level-1, 6))</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-3" name="Set position" sid="259214030154675" type="PipeTop">
+                    <param id="0" name="X">Pipe.X+0.74</param>
+                    <param id="1" name="Y">Pipe.BBoxTop-PipeTop.Height/2+3</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="356690391261618" type="PipeTop">
+                    <param id="0" name="Pin to">Pipe</param>
+                    <param id="1" name="Mode">1</param>
+                </action>
+                <action behavior="Pin" id="1" name="Unpin" sid="843338824105567" type="PipePoints" />
+                <action id="-3" name="Set position" sid="447561970834466" type="PipePoints">
+                    <param id="0" name="X">Pipe.X</param>
+                    <param id="1" name="Y">Pipe.BBoxTop</param>
+                </action>
+                <action id="-15" name="Set visible" sid="343430215388450" type="PipePoints">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="871824659907169" type="PipePoints">
+                    <param id="0" name="Pin to">Pipe</param>
+                    <param id="1" name="Mode">1</param>
+                </action>
+            </actions>
         </event-block>
         <event-block sid="694892267000505">
             <conditions>
@@ -162,7 +197,7 @@
                 </action>
                 <action id="0" name="Call function" sid="993391953805132" type="Function">
                     <param id="0" name="Name">&quot;DisableFaller&quot;</param>
-                    <param id="1" name="Parameter {n}">Function.Param(0)</param>
+                    <param id="1" name="Parameter {n}">Function.Param(0){###}PipePoolID</param>
                 </action>
             </actions>
         </event-block>
@@ -227,6 +262,23 @@
                 </action>
                 <action id="0" name="Set text" sid="311823145475609" type="PipePoints">
                     <param id="0" name="Text">Pipe.PointsEarned</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="548941694189193">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="917516090922865" type="Pipe">
+                    <param id="0" name="Instance variable">Active</param>
+                </condition>
+                <condition id="-2" name="Compare Y" sid="978541819652060" type="Pipe">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Background&quot;)+(Pipe.BBoxBottom-Pipe.BBoxTop)/2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="602559135612749" type="Function">
+                    <param id="0" name="Name">Pipe.DestroyCallBack</param>
+                    <param id="1" name="Parameter {n}">Pipe.UID{###}PipePoolID</param>
                 </action>
             </actions>
         </event-block>

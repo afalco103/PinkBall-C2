@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Menu</name>
+    <events>
+        <variable constant="1" name="StartingGameSpeed" sid="412549375568114" static="0" type="number">100</variable>
+        <include>Background</include>
+        <event-block sid="658781252408224">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="438025820599076" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="349560956949458" type="System">
+                    <param id="0" name="Variable">Combo</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="616555365106939" type="System">
+                    <param id="0" name="Variable">GameSpeed</param>
+                    <param id="1" name="Value">STARTINGGAMESPEED</param>
+                </action>
+                <action id="-9" name="Set value" sid="427330845128326" type="System">
+                    <param id="0" name="Variable">EnemySpawnRate</param>
+                    <param id="1" name="Value">MINENEMYSPAWNRATE</param>
+                </action>
+                <action id="-9" name="Set value" sid="666690077157336" type="System">
+                    <param id="0" name="Variable">Level</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="700108204730952" type="System">
+                    <param id="0" name="Variable">PipesHit</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-1" name="Set X" sid="424709046978822" type="ResumeButton">
+                    <param id="0" name="X">ViewportRight(&quot;Background&quot;)/2</param>
+                </action>
+                <action id="-1" name="Set X" sid="243902901171133" type="Logo">
+                    <param id="0" name="X">ViewportRight(&quot;Background&quot;)/2</param>
+                </action>
+                <action id="-1" name="Set X" sid="891012650172718" type="PauseText">
+                    <param id="0" name="X">ViewportRight(&quot;Background&quot;)/2</param>
+                </action>
+                <action id="-3" name="Set position" sid="706938402806783" type="TotalScore">
+                    <param id="0" name="X">5</param>
+                    <param id="1" name="Y">5</param>
+                </action>
+                <action id="-3" name="Set position" sid="424400168070236" type="BestScore">
+                    <param id="0" name="X">TotalScore.X</param>
+                    <param id="1" name="Y">TotalScore.Y+TotalScore.Height</param>
+                </action>
+                <action id="-15" name="Set visible" sid="655261431448265" type="TotalScore">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-13" name="Set time scale" sid="631853002876065" type="System">
+                    <param id="0" name="Time scale">1.0</param>
+                </action>
+                <action id="-14" name="Set object time scale" sid="988385131917737" type="System">
+                    <param id="0" name="Object">Player</param>
+                    <param id="1" name="Time scale">1.0</param>
+                </action>
+                <action id="-14" name="Set object time scale" sid="196496666648523" type="System">
+                    <param id="0" name="Object">Bullet</param>
+                    <param id="1" name="Time scale">1.0</param>
+                </action>
+                <action id="1" name="Get item" sid="411679078114866" type="HighScores">
+                    <param id="0" name="Key">&quot;HighScore&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="175655378488431">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="836252804299513" type="System">
+                            <param id="0" name="First value">TotalScore</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="999046343689676" type="TotalScore">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="338788598764879" type="TotalScore">
+                            <param id="0" name="Text">&quot;Score: &quot;&amp;TotalScore</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="700716416779120">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="400161080567815" type="System">
+                                    <param id="0" name="First value">TotalScore</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">HighScore</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="298044441150199" type="TotalScore">
+                                    <param id="0" name="Text">&quot;New Best Score! &quot;&amp;TotalScore</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="955096308295874" type="System">
+                                    <param id="0" name="Variable">HighScore</param>
+                                    <param id="1" name="Value">TotalScore</param>
+                                </action>
+                                <action id="0" name="Set item" sid="159351432372689" type="HighScores">
+                                    <param id="0" name="Key">&quot;HighScore&quot;</param>
+                                    <param id="1" name="Value">TotalScore</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="293003676254978">
+            <conditions>
+                <condition id="1" name="On item get" sid="359248086571490" type="HighScores">
+                    <param id="0" name="Key">&quot;HighScore&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="933049662115871" type="System">
+                    <param id="0" name="Variable">HighScore</param>
+                    <param id="1" name="Value">HighScores.ItemValue</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="900133727853917">
+                    <conditions>
+                        <condition id="-37" name="Is number NaN" sid="130664106550548" type="System">
+                            <param id="0" name="Number">HighScore</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="695182657693834" type="System">
+                            <param id="0" name="Variable">HighScore</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="735976886102862">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="539177858925554" type="System">
+                            <param id="0" name="First value">TotalScore</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">HighScore</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="575171133582683" type="TotalScore">
+                            <param id="0" name="Text">&quot;New Best Score! &quot;&amp;TotalScore</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="486778000009174" type="System">
+                            <param id="0" name="Variable">HighScore</param>
+                            <param id="1" name="Value">TotalScore</param>
+                        </action>
+                        <action id="0" name="Set item" sid="735444778802989" type="HighScores">
+                            <param id="0" name="Key">&quot;HighScore&quot;</param>
+                            <param id="1" name="Value">TotalScore</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="158636474200102">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="887631001917837" type="System">
+                            <param id="0" name="Variable">HighScore</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="541779863139716" type="BestScore">
+                            <param id="0" name="Text">&quot;Best Score: &quot;&amp;HighScore</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="348037554378904">
+            <conditions>
+                <condition id="3" name="On touched object" sid="654634657110740" type="Touch">
+                    <param id="0" name="Object">ResumeButton</param>
+                </condition>
+                <condition id="12" inverted="1" name="Has Nth touch" sid="910725865646337" type="Touch">
+                    <param id="0" name="Touch number">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="689950707704053" type="System">
+                    <param id="0" name="Layout">Game</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
