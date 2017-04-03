@@ -32,6 +32,5 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <layer locked="0" name="Enemies" parallax-in-editor="0" visible="1" />
         <layer locked="0" name="Pause" parallax-in-editor="0" visible="1" />
         <layer locked="0" name="HUD" parallax-in-editor="0" visible="1" />
-        <layer locked="0" name="Menu" parallax-in-editor="0" visible="1" />
     </layers>
 </c2uistate>

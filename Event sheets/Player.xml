@@ -211,6 +211,11 @@
                             <param id="1" name="Comparison">5</param>
                             <param id="2" name="Second value">Pipe.X-PipeSides.Height/2-10</param>
                         </condition>
+                        <condition id="-8" name="Compare two values" sid="953515758030443" type="System">
+                            <param id="0" name="First value">Pipe.BBoxTop</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">Player.BBoxBottom</param>
+                        </condition>
                     </conditions>
                     <actions>
                         <action id="-13" name="Set boolean" sid="963991275065156" type="Pipe">
