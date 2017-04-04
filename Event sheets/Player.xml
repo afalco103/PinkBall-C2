@@ -118,7 +118,7 @@
                 <event-block sid="191707997725083">
                     <conditions>
                         <condition id="-8" name="Compare two values" sid="700904185842205" type="System">
-                            <param id="0" name="First value">PipesHit % 50</param>
+                            <param id="0" name="First value">PipesHit % 20</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Second value">0</param>
                         </condition>
@@ -264,6 +264,19 @@
                     <param id="0" name="Name">&quot;SetPowerUpAnimation&quot;</param>
                     <param id="1" name="Parameter {n}"></param>
                 </action>
+                <action id="-3" name="Create object" sid="376757170702675" type="System">
+                    <param id="0" name="Object to create">InGamePoints</param>
+                    <param id="1" name="Layer">&quot;PowerUps&quot;</param>
+                    <param id="2" name="X">PowerUp.X</param>
+                    <param id="3" name="Y">PowerUp.Y</param>
+                </action>
+                <action id="0" name="Set text" sid="413852581184413" type="InGamePoints">
+                    <param id="0" name="Text">&quot;+&quot;&amp;100*Level</param>
+                </action>
+                <action id="-10" name="Add to" sid="334509028401011" type="System">
+                    <param id="0" name="Variable">TotalScore</param>
+                    <param id="1" name="Value">100*Level</param>
+                </action>
                 <action id="0" name="Call function" sid="743603377430506" type="Function">
                     <param id="0" name="Name">PowerUp.DestroyCallBack</param>
                     <param id="1" name="Parameter {n}">PowerUp.UID{###}PowerUpPoolID</param>
@@ -300,14 +313,6 @@
                     </actions>
                 </event-block>
             </sub-events>
-        </event-block>
-        <event-block sid="954435651132959">
-            <conditions>
-                <condition id="-4" name="Is outside layout" sid="804630839736348" type="Bullet" />
-            </conditions>
-            <actions>
-                <action id="-9" name="Destroy" sid="907714765682453" type="Bullet" />
-            </actions>
         </event-block>
         <event-block sid="717670613965441">
             <conditions>

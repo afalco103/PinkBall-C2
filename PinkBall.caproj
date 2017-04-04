@@ -584,6 +584,9 @@
             </object-folder>
             <object-type name="Bullet" sid="460064811829303">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="Active" sid="547146695285490" type="boolean" />
+                </instance-variables>
                 <behaviors>
                     <behavior-type name="Bullet" sid="744157027234892">
                         <behavior id="Bullet" />
@@ -941,6 +944,7 @@
             <event-sheet>Pipes.xml</event-sheet>
             <event-sheet>Player.xml</event-sheet>
             <event-sheet>PowerUps.xml</event-sheet>
+            <event-sheet>Sizing.xml</event-sheet>
         </event-folder>
         <event-folder name="Menu">
             <event-sheet>Menu.xml</event-sheet>

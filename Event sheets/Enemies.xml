@@ -169,11 +169,15 @@
                     <param id="3" name="Y">Enemy.Y</param>
                 </action>
                 <action id="0" name="Set text" sid="467419347335210" type="InGamePoints">
-                    <param id="0" name="Text">&quot;+&quot;&amp;ENEMYBASEPOINTS*Level</param>
+                    <param id="0" name="Text">&quot;+&quot;&amp;(ENEMYBASEPOINTS*Level)</param>
                 </action>
                 <action id="0" name="Call function" sid="967406125711042" type="Function">
                     <param id="0" name="Name">Enemy.DestroyCallBack</param>
                     <param id="1" name="Parameter {n}">Enemy.UID{###}EnemyPoolID</param>
+                </action>
+                <action id="-10" name="Add to" sid="535882104166736" type="System">
+                    <param id="0" name="Variable">TotalScore</param>
+                    <param id="1" name="Value">ENEMYBASEPOINTS*Level</param>
                 </action>
             </actions>
         </event-block>
