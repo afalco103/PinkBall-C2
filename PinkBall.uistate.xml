@@ -14,9 +14,9 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <layout order="12">Game</layout>
         <event-sheet order="1">Main</event-sheet>
         <event-sheet order="2">Enemies</event-sheet>
-        <event-sheet active="1" order="3">Player</event-sheet>
+        <event-sheet order="3">Player</event-sheet>
         <event-sheet order="4">PowerUps</event-sheet>
-        <event-sheet order="5">Pipes</event-sheet>
+        <event-sheet active="1" order="5">Pipes</event-sheet>
         <event-sheet order="6">ComboCoins</event-sheet>
         <event-sheet order="7">HUD</event-sheet>
         <event-sheet order="8">Background</event-sheet>

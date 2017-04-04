@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2project>
     <name>PinkBall</name>
-    <description></description>
-    <version>1.0.0.0</version>
-    <author></author>
+    <description>PinkBall</description>
+    <version>0.0.0.1</version>
+    <author>allie falco</author>
     <author-email></author-email>
     <author-website>http://</author-website>
-    <app-id>com.mycompany.myapp</app-id>
+    <app-id>com.flyawaygames.pinkball</app-id>
     <unique-id>2c3qk4uv8gfrq</unique-id>
     <saved-with-version>23900</saved-with-version>
     <used-plugins>
@@ -42,7 +42,7 @@
         <prop name="Enable WebGL">On</prop>
         <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Fullscreen scaling">High quality</prop>
-        <prop name="Loader style">Construct 2 splash</prop>
+        <prop name="Loader style">Percentage text</prop>
         <prop name="Orientations">Any</prop>
         <prop name="Pause on unfocus">No</prop>
         <prop name="Physics engine">Box2D asm.js</prop>

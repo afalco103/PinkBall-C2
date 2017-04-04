@@ -97,7 +97,7 @@
             </conditions>
             <actions>
                 <action id="-5" name="Set width" sid="814844825866711" type="Pipe">
-                    <param id="0" name="Width">random(40,300)</param>
+                    <param id="0" name="Width">random(Pipe.Height, Pipe.Height*4)</param>
                 </action>
                 <action id="0" name="Call function" sid="491635981649146" type="Function">
                     <param id="0" name="Name">&quot;InitializeFaller&quot;</param>
