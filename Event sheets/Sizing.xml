@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Sizing</name>
+    <events>
+        <event-block sid="454779731960936">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="646981863938051" type="System" />
+            </conditions>
+            <actions>
+                <action id="-5" name="Set width" sid="459029626566259" type="Player">
+                    <param id="0" name="Width">ViewportRight(&quot;Background&quot;)/8</param>
+                </action>
+                <action id="-6" name="Set height" sid="152598436276308" type="Player">
+                    <param id="0" name="Height">Player.Width</param>
+                </action>
+                <action id="-6" name="Set height" sid="552677628816862" type="Pipe">
+                    <param id="0" name="Height">Player.Width+Player.Width/8</param>
+                </action>
+                <action id="-5" name="Set width" sid="962054613181349" type="PipeGate">
+                    <param id="0" name="Width">(Player.Width+Player.Width/8)*(70/50)</param>
+                </action>
+                <action id="-5" name="Set width" sid="947929503938736" type="PipeTop">
+                    <param id="0" name="Width">(Player.Width+Player.Width/8)*(70/50)</param>
+                </action>
+                <action id="-6" name="Set height" sid="890543225820014" type="PipeSides">
+                    <param id="0" name="Height">(Player.Width+Player.Width/8)*(70/50)</param>
+                </action>
+                <action id="-7" name="Set size" sid="813274398764150" type="Bullet">
+                    <param id="0" name="Width">Player.Width/4</param>
+                    <param id="1" name="Height">Player.Width/4</param>
+                </action>
+                <action id="-7" name="Set size" sid="453693245530606" type="Enemy">
+                    <param id="0" name="Width">Player.Width/2</param>
+                    <param id="1" name="Height">Player.Width/2</param>
+                </action>
+                <action id="-7" name="Set size" sid="912905028997100" type="PowerUp">
+                    <param id="0" name="Width">Player.Width*(2/3)</param>
+                    <param id="1" name="Height">Player.Width*(2/3)</param>
+                </action>
+                <action id="-7" name="Set size" sid="487743330452573" type="ComboCoin">
+                    <param id="0" name="Width">Player.Width/2</param>
+                    <param id="1" name="Height">Player.Width/2</param>
+                </action>
+                <action id="-7" name="Set size" sid="659157130827280" type="ResumeButton">
+                    <param id="0" name="Width">Player.Width</param>
+                    <param id="1" name="Height">Player.Height</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

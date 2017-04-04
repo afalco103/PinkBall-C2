@@ -40,7 +40,7 @@
         <prop name="Clear background">No</prop>
         <prop name="Downscaling">Medium quality</prop>
         <prop name="Enable WebGL">On</prop>
-        <prop name="Fullscreen in browser">Scale outer</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Fullscreen scaling">High quality</prop>
         <prop name="Loader style">Construct 2 splash</prop>
         <prop name="Orientations">Any</prop>
@@ -584,6 +584,9 @@
             </object-folder>
             <object-type name="Bullet" sid="460064811829303">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="Active" sid="547146695285490" type="boolean" />
+                </instance-variables>
                 <behaviors>
                     <behavior-type name="Bullet" sid="744157027234892">
                         <behavior id="Bullet" />
@@ -839,10 +842,10 @@
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="690636226308322" speed="5">
                         <frame duration="1" hotspotX="0.5" hotspotY="0.502203" original-source="C:\Users\Alexandra\Pictures\PinkBall\misc\resumeIcon.png">
                             <collision-poly>
-                                <point x="0.5" y="0.207049" />
-                                <point x="0.786957" y="0.502203" />
-                                <point x="0.495652" y="0.775332" />
-                                <point x="0.217391" y="0.488987" />
+                                <point x="1" y="0" />
+                                <point x="1" y="1" />
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
                             </collision-poly>
                         </frame>
                     </animation>
@@ -941,6 +944,7 @@
             <event-sheet>Pipes.xml</event-sheet>
             <event-sheet>Player.xml</event-sheet>
             <event-sheet>PowerUps.xml</event-sheet>
+            <event-sheet>Sizing.xml</event-sheet>
         </event-folder>
         <event-folder name="Menu">
             <event-sheet>Menu.xml</event-sheet>

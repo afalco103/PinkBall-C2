@@ -10,18 +10,19 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="9">Menu</layout>
-        <layout order="11">Game</layout>
-        <event-sheet order="0">Main</event-sheet>
-        <event-sheet order="2">Player</event-sheet>
-        <event-sheet order="3">PowerUps</event-sheet>
-        <event-sheet order="1">Enemies</event-sheet>
-        <event-sheet order="4">Pipes</event-sheet>
-        <event-sheet active="1" order="5">ComboCoins</event-sheet>
-        <event-sheet order="6">HUD</event-sheet>
-        <event-sheet order="7">Background</event-sheet>
-        <event-sheet order="8">Pause</event-sheet>
-        <event-sheet order="10">Menu</event-sheet>
+        <layout order="10">Menu</layout>
+        <layout order="12">Game</layout>
+        <event-sheet order="1">Main</event-sheet>
+        <event-sheet order="2">Enemies</event-sheet>
+        <event-sheet active="1" order="3">Player</event-sheet>
+        <event-sheet order="4">PowerUps</event-sheet>
+        <event-sheet order="5">Pipes</event-sheet>
+        <event-sheet order="6">ComboCoins</event-sheet>
+        <event-sheet order="7">HUD</event-sheet>
+        <event-sheet order="8">Background</event-sheet>
+        <event-sheet order="9">Pause</event-sheet>
+        <event-sheet order="11">Menu</event-sheet>
+        <event-sheet order="13">Sizing</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -38,7 +39,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="object-folder/Game/Pipes/" />
         <folder expanded="1" path="layout-folder/" />
         <folder expanded="1" path="event-folder/" />
-        <folder expanded="0" path="event-folder/Game/" />
+        <folder expanded="1" path="event-folder/Game/" />
         <folder expanded="1" path="event-folder/Menu/" />
         <folder expanded="1" path="file-folder/" />
         <folder expanded="1" path="sound-folder/" />

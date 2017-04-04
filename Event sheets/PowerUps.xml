@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>PowerUps</name>
     <events>
+        <variable constant="0" name="BulletPoolID" sid="304144492990893" static="0" type="number">0</variable>
         <variable constant="0" name="PowerUpPoolID" sid="438352997720345" static="0" type="number">0</variable>
         <variable constant="1" name="MaxShrinkTime" sid="825762256518701" static="0" type="number">8</variable>
         <variable constant="1" name="MAXSLOWTIME" sid="160391868788366" static="0" type="number">8</variable>
@@ -90,6 +91,16 @@
                     <param id="0" name="Name">PowerUp.DestroyCallBack</param>
                     <param id="1" name="Parameter {n}">PowerUp.UID{###}PowerUpPoolID</param>
                 </action>
+                <action id="-3" name="Create object" sid="903411514146245" type="System">
+                    <param id="0" name="Object to create">FallerPool</param>
+                    <param id="1" name="Layer">&quot;PowerUps&quot;</param>
+                    <param id="2" name="X">0</param>
+                    <param id="3" name="Y">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="663262365495585" type="System">
+                    <param id="0" name="Variable">BulletPoolID</param>
+                    <param id="1" name="Value">FallerPool.UID</param>
+                </action>
             </actions>
             <sub-events>
                 <variable constant="0" name="loopCount" sid="361382649829601" static="0" type="number">0</variable>
@@ -122,6 +133,35 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="854489088438716">
+                    <conditions>
+                        <condition id="-23" name="While" sid="331081554123429" type="System" />
+                        <condition id="-14" name="Compare variable" sid="325285922853432" type="System">
+                            <param id="0" name="Variable">loopCount</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">50</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="963392579016505" type="System">
+                            <param id="0" name="Object to create">Bullet</param>
+                            <param id="1" name="Layer">&quot;PowerUps&quot;</param>
+                            <param id="2" name="X">-500</param>
+                            <param id="3" name="Y">-500</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="683801305474416" type="Bullet">
+                            <param id="0" name="Angle">-90</param>
+                        </action>
+                        <action id="0" name="Call function" sid="281215959252754" type="Function">
+                            <param id="0" name="Name">&quot;ResetBullet&quot;</param>
+                            <param id="1" name="Parameter {n}">Bullet.UID{###}BulletPoolID</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="198714324074026" type="System">
+                            <param id="0" name="Variable">loopCount</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-block>
         <event-block sid="808422798850371">
@@ -142,7 +182,7 @@
                     <param id="1" name="From">1</param>
                 </action>
                 <action disabled="1" id="4" name="Set animation" sid="244882655720903" type="PowerUp">
-                    <param id="0" name="Animation">&quot;Shield&quot;</param>
+                    <param id="0" name="Animation">&quot;Shoot&quot;</param>
                     <param id="1" name="From">1</param>
                 </action>
                 <action id="0" name="Call function" sid="776196322071465" type="Function">
@@ -157,9 +197,9 @@
                     <param id="0" name="Tag">&quot;powerups&quot;</param>
                 </condition>
                 <condition id="-8" name="Compare two values" sid="913112366370635" type="System">
-                    <param id="0" name="First value">floor(random(0,10))</param>
+                    <param id="0" name="First value">floor(random(0,7))</param>
                     <param id="1" name="Comparison">3</param>
-                    <param id="2" name="Second value">0</param>
+                    <param id="2" name="Second value">1</param>
                 </condition>
             </conditions>
             <actions>
@@ -439,58 +479,83 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">1</param>
                         </condition>
+                        <condition id="-14" name="Pick by unique ID" sid="825063290187682" type="FallerPool">
+                            <param id="0" name="Unique ID">BulletPoolID</param>
+                        </condition>
+                        <condition id="-14" name="Pick by unique ID" sid="867760986846239" type="Bullet">
+                            <param id="0" name="Unique ID">FallerPool.Front</param>
+                        </condition>
                     </conditions>
                     <actions>
-                        <action id="-3" name="Create object" sid="438108320120452" type="System">
-                            <param id="0" name="Object to create">Bullet</param>
-                            <param id="1" name="Layer">&quot;Player&quot;</param>
-                            <param id="2" name="X">Player.X</param>
-                            <param id="3" name="Y">Player.Y - Player.Height/2</param>
+                        <action id="0" name="Call function" sid="320389219460394" type="Function">
+                            <param id="0" name="Name">&quot;SpawnBullet&quot;</param>
+                            <param id="1" name="Parameter {n}">Bullet.UID</param>
                         </action>
-                        <action id="-8" name="Set angle" sid="627846179568229" type="Bullet">
-                            <param id="0" name="Angle">-90</param>
+                        <action id="-3" name="Set position" sid="797195323419372" type="Bullet">
+                            <param id="0" name="X">Player.X</param>
+                            <param id="1" name="Y">Player.BBoxTop</param>
                         </action>
-                        <action id="-14" name="Set object time scale" sid="548534089694244" type="System">
-                            <param id="0" name="Object">Bullet</param>
-                            <param id="1" name="Time scale">1.0</param>
+                        <action id="6" name="Pop" sid="688934876793351" type="FallerPool">
+                            <param id="0" name="Where">1</param>
+                            <param id="1" name="Axis">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="785334018241726">
+                    <conditions>
+                        <condition id="0" name="Compare value" sid="244267759385489" type="ActivePowerUps">
+                            <param id="0" name="Key">&quot;Shoot&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                        <condition id="-14" name="Pick by unique ID" sid="590275242088027" type="FallerPool">
+                            <param id="0" name="Unique ID">BulletPoolID</param>
+                        </condition>
+                        <condition id="-14" name="Pick by unique ID" sid="192858409462372" type="Bullet">
+                            <param id="0" name="Unique ID">FallerPool.At(1)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="375053094090556" type="Function">
+                            <param id="0" name="Name">&quot;SpawnBullet&quot;</param>
+                            <param id="1" name="Parameter {n}">Bullet.UID</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="755910408647424" type="Bullet">
+                            <param id="0" name="X">Player.X - Bullet.Width</param>
+                            <param id="1" name="Y">Player.BBoxTop</param>
                         </action>
                     </actions>
                 </event-block>
                 <event-block sid="931285860155945">
                     <conditions>
-                        <condition id="-22" name="Else" sid="849926155904852" type="System" />
                         <condition id="0" name="Compare value" sid="532494961345099" type="ActivePowerUps">
                             <param id="0" name="Key">&quot;Shoot&quot;</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">2</param>
                         </condition>
+                        <condition id="-14" name="Pick by unique ID" sid="885450771580691" type="FallerPool">
+                            <param id="0" name="Unique ID">BulletPoolID</param>
+                        </condition>
+                        <condition id="-14" name="Pick by unique ID" sid="683190515116887" type="Bullet">
+                            <param id="0" name="Unique ID">FallerPool.Front</param>
+                        </condition>
                     </conditions>
                     <actions>
-                        <action id="-3" name="Create object" sid="560479304983066" type="System">
-                            <param id="0" name="Object to create">Bullet</param>
-                            <param id="1" name="Layer">&quot;Player&quot;</param>
-                            <param id="2" name="X">Player.X-Bullet.Width</param>
-                            <param id="3" name="Y">Player.Y - Player.Height/2</param>
+                        <action id="0" name="Call function" sid="897326031250632" type="Function">
+                            <param id="0" name="Name">&quot;SpawnBullet&quot;</param>
+                            <param id="1" name="Parameter {n}">Bullet.UID</param>
                         </action>
-                        <action id="-8" name="Set angle" sid="189855111287004" type="Bullet">
-                            <param id="0" name="Angle">-90</param>
+                        <action id="-3" name="Set position" sid="444597686312439" type="Bullet">
+                            <param id="0" name="X">Player.X + Bullet.Width</param>
+                            <param id="1" name="Y">Player.BBoxTop</param>
                         </action>
-                        <action id="-14" name="Set object time scale" sid="280812176316972" type="System">
-                            <param id="0" name="Object">Bullet</param>
-                            <param id="1" name="Time scale">1.0</param>
+                        <action id="6" name="Pop" sid="144182204677625" type="FallerPool">
+                            <param id="0" name="Where">1</param>
+                            <param id="1" name="Axis">0</param>
                         </action>
-                        <action id="-3" name="Create object" sid="292926081691961" type="System">
-                            <param id="0" name="Object to create">Bullet</param>
-                            <param id="1" name="Layer">&quot;Player&quot;</param>
-                            <param id="2" name="X">Player.X+Bullet.Width</param>
-                            <param id="3" name="Y">Player.Y - Player.Height/2</param>
-                        </action>
-                        <action id="-8" name="Set angle" sid="731988262822229" type="Bullet">
-                            <param id="0" name="Angle">-90</param>
-                        </action>
-                        <action id="-14" name="Set object time scale" sid="181362976029624" type="System">
-                            <param id="0" name="Object">Bullet</param>
-                            <param id="1" name="Time scale">1.0</param>
+                        <action id="6" name="Pop" sid="490622841471294" type="FallerPool">
+                            <param id="0" name="Where">1</param>
+                            <param id="1" name="Axis">0</param>
                         </action>
                     </actions>
                 </event-block>
@@ -530,6 +595,83 @@
                 <action id="0" name="Call function" sid="171474217473274" type="Function">
                     <param id="0" name="Name">PowerUp.DestroyCallBack</param>
                     <param id="1" name="Parameter {n}">PowerUp.UID{###}PowerUpPoolID</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="442463642268449">
+            <conditions>
+                <condition id="0" name="On function" sid="109702281950143" type="Function">
+                    <param id="0" name="Name">&quot;ResetBullet&quot;</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="849326040724359" type="FallerPool">
+                    <param id="0" name="Unique ID">BulletPoolID</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="382079570931436" type="Bullet">
+                    <param id="0" name="Unique ID">Function.Param(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="575835088824094" type="Bullet">
+                    <param id="0" name="X">-500</param>
+                    <param id="1" name="Y">-500</param>
+                </action>
+                <action behavior="Bullet" id="5" name="Set enabled" sid="407670727519300" type="Bullet">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action id="5" name="Push" sid="725078895654852" type="FallerPool">
+                    <param id="0" name="Where">1</param>
+                    <param id="1" name="Value">Bullet.UID</param>
+                    <param id="2" name="Axis">0</param>
+                </action>
+                <action id="-13" name="Set boolean" sid="983585381009919" type="Bullet">
+                    <param id="0" name="Instance variable">Active</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="198870894760861" type="Bullet">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="562779683785589">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="183618190830318" type="Bullet" />
+                <condition id="-8" name="Is boolean instance variable set" sid="846358688969547" type="Bullet">
+                    <param id="0" name="Instance variable">Active</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="506714190294523" type="Function">
+                    <param id="0" name="Name">&quot;ResetBullet&quot;</param>
+                    <param id="1" name="Parameter {n}">Bullet.UID</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="423356566873144">
+            <conditions>
+                <condition id="0" name="On function" sid="963375779159775" type="Function">
+                    <param id="0" name="Name">&quot;SpawnBullet&quot;</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="697064304314540" type="Bullet">
+                    <param id="0" name="Unique ID">Function.Param(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="5" name="Set enabled" sid="844170063345673" type="Bullet">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action id="-14" name="Set object time scale" sid="955799109492179" type="System">
+                    <param id="0" name="Object">Bullet</param>
+                    <param id="1" name="Time scale">1.0</param>
+                </action>
+                <action id="-13" name="Set boolean" sid="943898139914088" type="Bullet">
+                    <param id="0" name="Instance variable">Active</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="304734851406407" type="Bullet">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="11" name="Set collisions enabled" sid="140523490874651" type="Bullet">
+                    <param id="0" name="Collisions">1</param>
                 </action>
             </actions>
         </event-block>

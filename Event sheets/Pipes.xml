@@ -211,7 +211,7 @@
                 </condition>
                 <condition id="-2" name="Compare Y" sid="972554495539617" type="Pipe">
                     <param id="0" name="Comparison">4</param>
-                    <param id="1" name="Y co-ordinate">Player.Height*4 + Pipe.Width/2</param>
+                    <param id="1" name="Y co-ordinate">Player.Height*3 + Pipe.Width/2</param>
                 </condition>
             </conditions>
             <actions>
