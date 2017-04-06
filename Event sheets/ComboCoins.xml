@@ -109,6 +109,9 @@
                     <param id="0" name="Name">ComboCoin.DestroyCallBack</param>
                     <param id="1" name="Parameter {n}">ComboCoin.UID{###}ComboCoinPoolID</param>
                 </action>
+                <action id="0" name="Set text" sid="338450134430546" type="Scoring">
+                    <param id="0" name="Text">&quot;x&quot;&amp;Combo</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="500892686254426">
