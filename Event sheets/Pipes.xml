@@ -167,17 +167,17 @@
                     <param id="0" name="Pin to">Pipe</param>
                     <param id="1" name="Mode">1</param>
                 </action>
-                <action behavior="Pin" id="1" name="Unpin" sid="843338824105567" type="PipePoints" />
-                <action id="-3" name="Set position" sid="447561970834466" type="PipePoints">
+                <action behavior="Pin" id="1" name="Unpin" sid="670600851126276" type="PipeText" />
+                <action id="-3" name="Set position" sid="764506464580203" type="PipeText">
                     <param id="0" name="X">Pipe.X</param>
                     <param id="1" name="Y">Pipe.BBoxTop</param>
                 </action>
-                <action id="-15" name="Set visible" sid="343430215388450" type="PipePoints">
+                <action id="-15" name="Set visible" sid="606657920613460" type="PipeText">
                     <param id="0" name="Visibility">0</param>
                 </action>
-                <action behavior="Pin" id="0" name="Pin to object" sid="871824659907169" type="PipePoints">
+                <action behavior="Pin" id="0" name="Pin to object" sid="126495308249238" type="PipeText">
                     <param id="0" name="Pin to">Pipe</param>
-                    <param id="1" name="Mode">1</param>
+                    <param id="1" name="Mode">0</param>
                 </action>
             </actions>
         </event-block>
@@ -254,14 +254,11 @@
                     <param id="0" name="Instance variable">PointsEarned</param>
                     <param id="1" name="Value">PipeBaseScore*Level*Combo</param>
                 </action>
-                <action id="0" name="Set text" sid="735480500526538" type="TotalScore">
-                    <param id="0" name="Text">TotalScore</param>
-                </action>
-                <action id="0" name="Set text" sid="615143670677605" type="Scoring">
-                    <param id="0" name="Text">&quot;x&quot;&amp;Combo</param>
-                </action>
-                <action id="0" name="Set text" sid="311823145475609" type="PipePoints">
+                <action id="0" name="Set text" sid="406896496843536" type="PipeText">
                     <param id="0" name="Text">Pipe.PointsEarned</param>
+                </action>
+                <action id="0" name="Set text" sid="306917876474466" type="ScoreText">
+                    <param id="0" name="Text">TotalScore</param>
                 </action>
             </actions>
         </event-block>

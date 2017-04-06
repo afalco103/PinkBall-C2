@@ -10,8 +10,8 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="10">Menu</layout>
-        <layout active="1" order="12">Game</layout>
+        <layout active="1" order="9">Game</layout>
+        <layout order="11">Menu</layout>
         <event-sheet order="1">Main</event-sheet>
         <event-sheet order="2">Enemies</event-sheet>
         <event-sheet order="3">Player</event-sheet>
@@ -20,9 +20,8 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <event-sheet order="6">ComboCoins</event-sheet>
         <event-sheet order="7">HUD</event-sheet>
         <event-sheet order="8">Background</event-sheet>
-        <event-sheet order="9">Pause</event-sheet>
-        <event-sheet order="11">Menu</event-sheet>
-        <event-sheet order="13">Sizing</event-sheet>
+        <event-sheet order="10">Sizing</event-sheet>
+        <event-sheet order="12">Menu</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />

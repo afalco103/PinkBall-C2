@@ -1,5 +1,5 @@
 ﻿{
-	"version": 1491438831,
+	"version": 1491452024,
 	"fileList": [
 		"data.js",
 		"c2runtime.js",
@@ -12,6 +12,7 @@
 		"images/pipesides-sheet0.png",
 		"images/pipetop-sheet0.png",
 		"images/pipetop-sheet1.png",
+		"images/pipetext.png",
 		"images/bullet-sheet0.png",
 		"images/combocoin-sheet0.png",
 		"images/enemy-sheet0.png",
@@ -21,7 +22,10 @@
 		"images/powerup-sheet1.png",
 		"images/resumebutton-sheet0.png",
 		"images/star-sheet0.png",
+		"images/fadeyellowtext.png",
 		"images/logo-sheet0.png",
+		"images/combotext.png",
+		"images/staticpinkfont.png",
 		"icon-16.png",
 		"icon-32.png",
 		"icon-114.png",

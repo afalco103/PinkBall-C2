@@ -61,11 +61,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>214</x>
-                        <y>719</y>
+                        <x>222.968429565</x>
+                        <y>728.007873535</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>49.936862946</width>
+                        <height>49.936862946</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.50220263</hotspotY>
@@ -528,36 +528,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="PipePoints" uid="41">
-                    <properties>
-                        <text>Pipe!</text>
-                        <initial-visibility>Invisible</initial-visibility>
-                        <font>Consolas,-24,700,0</font>
-                        <color>255,255,255</color>
-                        <horizontal-alignment>Center</horizontal-alignment>
-                        <vertical-alignment>Top</vertical-alignment>
-                        <hotspot>Bottom</hotspot>
-                        <wrapping>Word</wrapping>
-                        <line-height>0</line-height>
-                    </properties>
-                    <behavior-instances>
-                        <behavior-instance type="Pin" />
-                    </behavior-instances>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>-124.134979248</x>
-                        <y>302.645263672</y>
-                        <z>0</z>
-                        <width>200</width>
-                        <height>35</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>1</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
                 <instance type="PipeSides" uid="32">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
@@ -637,33 +607,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="TotalScore" uid="44">
-                    <properties>
-                        <text>Score: </text>
-                        <initial-visibility>Visible</initial-visibility>
-                        <font>Consolas,-27,700,0</font>
-                        <color>255,255,0</color>
-                        <horizontal-alignment>Left</horizontal-alignment>
-                        <vertical-alignment>Top</vertical-alignment>
-                        <hotspot>Top-left</hotspot>
-                        <wrapping>Word</wrapping>
-                        <line-height>0</line-height>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>8.411743164</x>
-                        <y>7.56892395</y>
-                        <z>0</z>
-                        <width>436.471191406</width>
-                        <height>35.540206909</height>
-                        <depth>0</depth>
-                        <hotspotX>0</hotspotX>
-                        <hotspotY>0</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
                 <instance type="BestScore" uid="45">
                     <properties>
                         <text>Best Score: 0</text>
@@ -726,6 +669,33 @@
                         <hotspotX>0.504950523</hotspotX>
                         <hotspotY>0.504950523</hotspotY>
                         <angle>1.570796371</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="StaticText" uid="47">
+                    <properties>
+                        <text>Score: 0</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Consolas,-24,700,0</font>
+                        <color>255,255,0</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>14.543060303</x>
+                        <y>6.206466675</y>
+                        <z>0</z>
+                        <width>255.880889893</width>
+                        <height>30.679718018</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>

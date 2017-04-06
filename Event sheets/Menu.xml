@@ -8,11 +8,14 @@
         <event-block sid="658781252408224">
             <conditions>
                 <condition id="-2" name="On start of layout" sid="438025820599076" type="System" />
+                <condition id="-14" name="Pick by unique ID" sid="177646337196499" type="StaticText">
+                    <param id="0" name="Unique ID">47</param>
+                </condition>
             </conditions>
             <actions>
                 <action id="-9" name="Set value" sid="349560956949458" type="System">
                     <param id="0" name="Variable">Combo</param>
-                    <param id="1" name="Value">1</param>
+                    <param id="1" name="Value">0</param>
                 </action>
                 <action id="-9" name="Set value" sid="616555365106939" type="System">
                     <param id="0" name="Variable">GameSpeed</param>
@@ -39,17 +42,6 @@
                 <action id="-1" name="Set X" sid="891012650172718" type="PauseText">
                     <param id="0" name="X">ViewportRight(&quot;Background&quot;)/2</param>
                 </action>
-                <action id="-3" name="Set position" sid="706938402806783" type="TotalScore">
-                    <param id="0" name="X">5</param>
-                    <param id="1" name="Y">5</param>
-                </action>
-                <action id="-3" name="Set position" sid="424400168070236" type="BestScore">
-                    <param id="0" name="X">TotalScore.X</param>
-                    <param id="1" name="Y">TotalScore.Y+TotalScore.Height</param>
-                </action>
-                <action id="-15" name="Set visible" sid="655261431448265" type="TotalScore">
-                    <param id="0" name="Visibility">0</param>
-                </action>
                 <action id="-13" name="Set time scale" sid="631853002876065" type="System">
                     <param id="0" name="Time scale">1.0</param>
                 </action>
@@ -64,6 +56,17 @@
                 <action id="1" name="Get item" sid="411679078114866" type="HighScores">
                     <param id="0" name="Key">&quot;HighScore&quot;</param>
                 </action>
+                <action id="0" name="Set text" sid="275863031640406" type="StaticText">
+                    <param id="0" name="Text">&quot;Score: &quot;&amp;TotalScore</param>
+                </action>
+                <action id="-3" name="Set position" sid="661617610328681" type="StaticText">
+                    <param id="0" name="X">10</param>
+                    <param id="1" name="Y">10</param>
+                </action>
+                <action id="-3" name="Set position" sid="588460253672177" type="BestScore">
+                    <param id="0" name="X">10</param>
+                    <param id="1" name="Y">StaticText.BBoxBottom</param>
+                </action>
             </actions>
             <sub-events>
                 <event-block sid="175655378488431">
@@ -74,14 +77,7 @@
                             <param id="2" name="Second value">0</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="-15" name="Set visible" sid="999046343689676" type="TotalScore">
-                            <param id="0" name="Visibility">1</param>
-                        </action>
-                        <action id="0" name="Set text" sid="338788598764879" type="TotalScore">
-                            <param id="0" name="Text">&quot;Score: &quot;&amp;TotalScore</param>
-                        </action>
-                    </actions>
+                    <actions />
                     <sub-events>
                         <event-block sid="700716416779120">
                             <conditions>
@@ -92,9 +88,6 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="0" name="Set text" sid="298044441150199" type="TotalScore">
-                                    <param id="0" name="Text">&quot;New Best Score! &quot;&amp;TotalScore</param>
-                                </action>
                                 <action id="-9" name="Set value" sid="955096308295874" type="System">
                                     <param id="0" name="Variable">HighScore</param>
                                     <param id="1" name="Value">TotalScore</param>
@@ -144,9 +137,6 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="0" name="Set text" sid="575171133582683" type="TotalScore">
-                            <param id="0" name="Text">&quot;New Best Score! &quot;&amp;TotalScore</param>
-                        </action>
                         <action id="-9" name="Set value" sid="486778000009174" type="System">
                             <param id="0" name="Variable">HighScore</param>
                             <param id="1" name="Value">TotalScore</param>

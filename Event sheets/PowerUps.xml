@@ -29,15 +29,15 @@
                     <param id="1" name="Value">&quot;Shield&quot;</param>
                 </action>
                 <action id="2" name="Set at X" sid="637329669166975" type="PowerUpNameArray">
-                    <param id="0" name="X">1</param>
+                    <param id="0" name="X">3</param>
                     <param id="1" name="Value">&quot;Shoot&quot;</param>
                 </action>
                 <action id="2" name="Set at X" sid="862772279413108" type="PowerUpNameArray">
-                    <param id="0" name="X">2</param>
+                    <param id="0" name="X">1</param>
                     <param id="1" name="Value">&quot;Slow&quot;</param>
                 </action>
                 <action id="2" name="Set at X" sid="369750821008488" type="PowerUpNameArray">
-                    <param id="0" name="X">3</param>
+                    <param id="0" name="X">2</param>
                     <param id="1" name="Value">&quot;Shrink&quot;</param>
                 </action>
                 <action id="2" name="Set at X" sid="215902848952338" type="PowerUpNameArray">

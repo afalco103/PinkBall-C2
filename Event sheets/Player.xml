@@ -5,7 +5,7 @@
     <events>
         <variable constant="0" name="HighScore" sid="292304171291295" static="0" type="number">0</variable>
         <variable constant="1" name="ScoreInterval" sid="478007141355276" static="0" type="number">0.1</variable>
-        <variable constant="0" name="Combo" sid="215275968585422" static="0" type="number">1</variable>
+        <variable constant="0" name="Combo" sid="215275968585422" static="0" type="number">0</variable>
         <comment>Input</comment>
         <event-block sid="684537635276362">
             <conditions>
@@ -56,6 +56,11 @@
                     <param id="1" name="Comparison">5</param>
                     <param id="2" name="Second value">Pipe.X-PipeSides.Height/2-10</param>
                 </condition>
+                <condition id="-8" name="Compare two values" sid="783866138737072" type="System">
+                    <param id="0" name="First value">Player.Y-Player.Height/2</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Second value">PipeGate.BBoxTop</param>
+                </condition>
             </conditions>
             <actions>
                 <action id="-13" name="Set boolean" sid="197716596106127" type="Pipe">
@@ -70,15 +75,12 @@
                 <action id="5" name="Set frame" sid="670788781788009" type="Pipe">
                     <param id="0" name="Frame number">1</param>
                 </action>
-                <action id="4" name="Set font color" sid="265786996242933" type="Scoring">
-                    <param id="0" name="Color">rgb(255,255,0)</param>
-                </action>
-                <action id="-15" name="Set visible" sid="559198221520131" type="PipePoints">
-                    <param id="0" name="Visibility">1</param>
-                </action>
                 <action id="-10" name="Set value" sid="516125724536009" type="Player">
                     <param id="0" name="Instance variable">CurrentPipeUID</param>
                     <param id="1" name="Value">Pipe.UID</param>
+                </action>
+                <action id="-15" name="Set visible" sid="542409336701767" type="PipeText">
+                    <param id="0" name="Visibility">1</param>
                 </action>
                 <action id="0" name="Call function" sid="373046921514893" type="Function">
                     <param id="0" name="Name">&quot;ScorePipe&quot;</param>
@@ -123,6 +125,9 @@
                     <param id="0" name="Variable">PipesHit</param>
                     <param id="1" name="Value">1</param>
                 </action>
+                <action id="0" name="Set text" sid="746367605142557" type="ComboText">
+                    <param id="0" name="Text">Combo</param>
+                </action>
             </actions>
             <sub-events>
                 <event-block sid="191707997725083">
@@ -138,8 +143,8 @@
                             <param id="0" name="Variable">Level</param>
                             <param id="1" name="Value">1</param>
                         </action>
-                        <action id="0" name="Set text" sid="754022573703408" type="LevelText">
-                            <param id="0" name="Text">Level</param>
+                        <action id="0" name="Set text" sid="963642107000677" type="LevelText">
+                            <param id="0" name="Text"> Level</param>
                         </action>
                     </actions>
                 </event-block>
@@ -163,7 +168,7 @@
                 </action>
                 <action id="-9" name="Set value" sid="326597112315737" type="System">
                     <param id="0" name="Variable">Combo</param>
-                    <param id="1" name="Value">1</param>
+                    <param id="1" name="Value">0</param>
                 </action>
                 <action id="4" name="Set animation" sid="960629803658434" type="Pipe">
                     <param id="0" name="Animation">&quot;Miss&quot;</param>
@@ -185,8 +190,8 @@
                     <param id="0" name="Variable">EnemySpawnRate</param>
                     <param id="1" name="Value">ENEMYSPAWNRATEINCREMENTS</param>
                 </action>
-                <action id="0" name="Set text" sid="763761020740655" type="Scoring">
-                    <param id="0" name="Text">&quot;x&quot;&amp;Combo</param>
+                <action id="0" name="Set text" sid="685801045496388" type="ComboText">
+                    <param id="0" name="Text">Combo</param>
                 </action>
             </actions>
             <sub-events>
@@ -277,18 +282,21 @@
                     <param id="0" name="Name">&quot;SetPowerUpAnimation&quot;</param>
                     <param id="1" name="Parameter {n}"></param>
                 </action>
-                <action id="-3" name="Create object" sid="376757170702675" type="System">
-                    <param id="0" name="Object to create">InGamePoints</param>
+                <action id="-3" name="Create object" sid="845917117035466" type="System">
+                    <param id="0" name="Object to create">FadeWhiteText</param>
                     <param id="1" name="Layer">&quot;PowerUps&quot;</param>
                     <param id="2" name="X">PowerUp.X</param>
                     <param id="3" name="Y">PowerUp.Y</param>
                 </action>
-                <action id="0" name="Set text" sid="413852581184413" type="InGamePoints">
+                <action id="0" name="Set text" sid="258470019864506" type="FadeWhiteText">
                     <param id="0" name="Text">&quot;+&quot;&amp;100*Level</param>
                 </action>
                 <action id="-10" name="Add to" sid="334509028401011" type="System">
                     <param id="0" name="Variable">TotalScore</param>
                     <param id="1" name="Value">100*Level</param>
+                </action>
+                <action id="0" name="Set text" sid="148300889121940" type="ScoreText">
+                    <param id="0" name="Text">TotalScore</param>
                 </action>
                 <action id="0" name="Call function" sid="743603377430506" type="Function">
                     <param id="0" name="Name">PowerUp.DestroyCallBack</param>
