@@ -699,6 +699,39 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="PipeText" uid="48">
+                    <properties>
+                        <character-width>18</character-width>
+                        <character-height>16</character-height>
+                        <character-set> !*+,-./0123&quot;456789:;&lt;=#&gt;?@ABCDEFG$HIJKLMNOPQ%RSTUVWXYZ[&amp;\]^_&apos;&apos;(){|}~</character-set>
+                        <text>0</text>
+                        <scale>1</scale>
+                        <initial-visibility>Invisible</initial-visibility>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Bottom</hotspot>
+                        <wrapping>Word</wrapping>
+                        <character-spacing>0</character-spacing>
+                        <line-height>0</line-height>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>-170.81602478</x>
+                        <y>347.624298096</y>
+                        <z>0</z>
+                        <width>75.682220459</width>
+                        <height>27</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>1</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
