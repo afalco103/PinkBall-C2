@@ -908,6 +908,9 @@
         <object-type name="BestScore" sid="461958158982973">
             <plugin id="Text" />
         </object-type>
+        <object-type name="LevelText" sid="870742377305829">
+            <plugin id="Text" />
+        </object-type>
     </object-folder>
     <families>
         <family name="Faller" plugin-id="Sprite" sid="607713808665046">
