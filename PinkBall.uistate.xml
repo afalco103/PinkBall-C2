@@ -11,7 +11,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     </configurations>
     <open-tabs>
         <layout order="9">Game</layout>
-        <layout active="1" order="11">Menu</layout>
+        <layout order="11">Menu</layout>
         <event-sheet order="1">Main</event-sheet>
         <event-sheet order="2">Enemies</event-sheet>
         <event-sheet order="3">Player</event-sheet>
@@ -22,6 +22,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <event-sheet order="8">Background</event-sheet>
         <event-sheet order="10">Sizing</event-sheet>
         <event-sheet order="12">Menu</event-sheet>
+        <event-sheet active="1" order="13">Pause</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
