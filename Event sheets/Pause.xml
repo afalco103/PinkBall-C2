@@ -20,6 +20,9 @@
                 <condition id="4" name="Is touching object" sid="838273703080990" type="Touch">
                     <param id="0" name="Object">ResumeButton</param>
                 </condition>
+                <condition id="12" inverted="1" name="Has Nth touch" sid="200535198768599" type="Touch">
+                    <param id="0" name="Touch number">1</param>
+                </condition>
             </conditions>
             <actions />
             <sub-events>
