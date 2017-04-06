@@ -162,13 +162,13 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="-3" name="Create object" sid="692058626722076" type="System">
-                    <param id="0" name="Object to create">InGamePoints</param>
+                <action id="-3" name="Create object" sid="207784287152317" type="System">
+                    <param id="0" name="Object to create">FadeWhiteText</param>
                     <param id="1" name="Layer">&quot;PowerUps&quot;</param>
                     <param id="2" name="X">Enemy.X</param>
                     <param id="3" name="Y">Enemy.Y</param>
                 </action>
-                <action id="0" name="Set text" sid="467419347335210" type="InGamePoints">
+                <action id="0" name="Set text" sid="737399405721167" type="FadeWhiteText">
                     <param id="0" name="Text">&quot;+&quot;&amp;(ENEMYBASEPOINTS*Level)</param>
                 </action>
                 <action id="0" name="Call function" sid="967406125711042" type="Function">

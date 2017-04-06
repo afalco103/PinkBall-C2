@@ -15,6 +15,7 @@
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="LocalStorage" version="1">Local storage</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Spritefont2" version="1">Sprite font</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
@@ -65,8 +66,8 @@
                         <type>PipeGate</type>
                         <type>PipeSides</type>
                         <type>PipeTop</type>
-                        <type>PipePoints</type>
                         <type>Pipe</type>
+                        <type>PipeText</type>
                     </container>
                     <animation-folder>
                         <animation framecount="2" loop="0" name="blue" pingpong="0" repeatcount="1" repeatto="0" sid="562586295804452" speed="0">
@@ -229,8 +230,8 @@
                         <type>PipeGate</type>
                         <type>PipeSides</type>
                         <type>PipeTop</type>
-                        <type>PipePoints</type>
                         <type>Pipe</type>
+                        <type>PipeText</type>
                     </container>
                     <animation-folder>
                         <animation framecount="2" loop="0" name="blue" pingpong="0" repeatcount="1" repeatto="0" sid="722646728544634" speed="0">
@@ -390,8 +391,8 @@
                         <type>PipeGate</type>
                         <type>PipeSides</type>
                         <type>PipeTop</type>
-                        <type>PipePoints</type>
                         <type>Pipe</type>
+                        <type>PipeText</type>
                     </container>
                     <animation-folder>
                         <animation framecount="1" loop="0" name="blue" pingpong="0" repeatcount="1" repeatto="0" sid="193897472707976" speed="5">
@@ -480,8 +481,8 @@
                         <type>PipeGate</type>
                         <type>PipeSides</type>
                         <type>PipeTop</type>
-                        <type>PipePoints</type>
                         <type>Pipe</type>
+                        <type>PipeText</type>
                     </container>
                     <animation-folder>
                         <animation framecount="1" loop="0" name="blue" pingpong="0" repeatcount="1" repeatto="0" sid="355466615139245" speed="5">
@@ -566,10 +567,10 @@
                         </animation>
                     </animation-folder>
                 </object-type>
-                <object-type name="PipePoints" sid="984217058774925">
-                    <plugin id="Text" />
+                <object-type name="PipeText" sid="127982420590979">
+                    <plugin id="Spritefont2" />
                     <behaviors>
-                        <behavior-type name="Pin" sid="253727764178099">
+                        <behavior-type name="Pin" sid="241550217068083">
                             <behavior id="Pin" />
                         </behavior-type>
                     </behaviors>
@@ -577,9 +578,10 @@
                         <type>PipeGate</type>
                         <type>PipeSides</type>
                         <type>PipeTop</type>
-                        <type>PipePoints</type>
                         <type>Pipe</type>
+                        <type>PipeText</type>
                     </container>
+                    <texture original-source="C:\Users\Alexandra\Downloads\Repacked - double.png" />
                 </object-type>
             </object-folder>
             <object-type name="Bullet" sid="460064811829303">
@@ -851,9 +853,6 @@
                     </animation>
                 </animation-folder>
             </object-type>
-            <object-type name="Scoring" sid="859935698501804">
-                <plugin id="Text" />
-            </object-type>
             <object-type name="Star" sid="673632406062739">
                 <plugin id="Sprite" />
                 <animation-folder>
@@ -873,8 +872,23 @@
                     </animation>
                 </animation-folder>
             </object-type>
-            <object-type name="TotalScore" sid="542902361873546">
-                <plugin id="Text" />
+            <object-type name="FadeWhiteText" sid="935499789458884">
+                <plugin id="Spritefont2" />
+                <behaviors>
+                    <behavior-type name="Fade" sid="923721590075925">
+                        <behavior id="Fade" />
+                    </behavior-type>
+                </behaviors>
+                <texture original-source="C:\Users\Alexandra\Downloads\Repacked - double.png" />
+            </object-type>
+            <object-type name="FadeYellowText" sid="941767092801826">
+                <plugin id="Spritefont2" />
+                <behaviors>
+                    <behavior-type name="Fade" sid="790947536339282">
+                        <behavior id="Fade" />
+                    </behavior-type>
+                </behaviors>
+                <texture original-source="C:\Users\Alexandra\Downloads\Repacked - double.png" />
             </object-type>
         </object-folder>
         <object-type name="Touch" sid="489287876620461">
@@ -908,8 +922,29 @@
         <object-type name="BestScore" sid="461958158982973">
             <plugin id="Text" />
         </object-type>
-        <object-type name="LevelText" sid="870742377305829">
-            <plugin id="Text" />
+        <object-type name="ScoreText" sid="288301658478878">
+            <plugin id="Spritefont2" />
+            <texture original-source="C:\Users\Alexandra\Downloads\Repacked - double.png" />
+        </object-type>
+        <object-type name="StaticWhiteFont" sid="840023153226554">
+            <plugin id="Spritefont2" />
+            <texture original-source="C:\Users\Alexandra\Downloads\Repacked - double.png" />
+        </object-type>
+        <object-type name="ComboText" sid="902641166141251">
+            <plugin id="Spritefont2" />
+            <texture original-source="C:\Users\Alexandra\Downloads\Repacked - double.png" />
+        </object-type>
+        <object-type name="StaticYellowFont" sid="823003043425592">
+            <plugin id="Spritefont2" />
+            <texture original-source="C:\Users\Alexandra\Downloads\Repacked - double.png" />
+        </object-type>
+        <object-type name="StaticPinkFont" sid="335502344824728">
+            <plugin id="Spritefont2" />
+            <texture original-source="C:\Users\Alexandra\Downloads\Repacked - double.png" />
+        </object-type>
+        <object-type name="LevelText" sid="950267097431114">
+            <plugin id="Spritefont2" />
+            <texture original-source="C:\Users\Alexandra\Downloads\Repacked - double.png" />
         </object-type>
     </object-folder>
     <families>

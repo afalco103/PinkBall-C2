@@ -93,24 +93,21 @@
                     <param id="0" name="Variable">Combo</param>
                     <param id="1" name="Value">ComboCoin.Value</param>
                 </action>
-                <action id="-3" name="Create object" sid="836730737620799" type="System">
-                    <param id="0" name="Object to create">InGamePoints</param>
+                <action id="-3" name="Create object" sid="936151544050773" type="System">
+                    <param id="0" name="Object to create">FadeYellowText</param>
                     <param id="1" name="Layer">&quot;PowerUps&quot;</param>
                     <param id="2" name="X">ComboCoin.X</param>
                     <param id="3" name="Y">ComboCoin.Y</param>
                 </action>
-                <action id="0" name="Set text" sid="161388457748563" type="InGamePoints">
+                <action id="0" name="Set text" sid="860478625535094" type="FadeYellowText">
                     <param id="0" name="Text">&quot;+&quot;&amp;ComboCoin.Value</param>
-                </action>
-                <action id="4" name="Set font color" sid="783503186624001" type="InGamePoints">
-                    <param id="0" name="Color">rgb(255, 255, 0)</param>
                 </action>
                 <action id="0" name="Call function" sid="609245578081799" type="Function">
                     <param id="0" name="Name">ComboCoin.DestroyCallBack</param>
                     <param id="1" name="Parameter {n}">ComboCoin.UID{###}ComboCoinPoolID</param>
                 </action>
-                <action id="0" name="Set text" sid="338450134430546" type="Scoring">
-                    <param id="0" name="Text">&quot;x&quot;&amp;Combo</param>
+                <action id="0" name="Set text" sid="545497456394943" type="ComboText">
+                    <param id="0" name="Text">Combo</param>
                 </action>
             </actions>
         </event-block>
